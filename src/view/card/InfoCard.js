@@ -18,6 +18,7 @@ export default function InfoCard({ title, href, children }) {
                         <FontAwesomeIcon icon="fa-solid fa-arrow-right" />
                     </span>
                 </div>
+                {children}
                 <div className="w-full flex justify-start items-center mt-6">
                     <div className="text-2xl font-bold text-green-600">
                         172 391 Kč
@@ -40,3 +41,16 @@ export default function InfoCard({ title, href, children }) {
             /**/
     );
 }
+
+/*
+                <div className="w-full flex justify-start items-center mt-6">
+                    <div className="text-2xl font-bold text-green-600">
+                        172 391 Kč
+                    </div>
+                </div>
+                <div className="w-full flex justify-start items-center mt-6">
+                    <div className="text-2xl font-bold text-green-600">
+                        172 391 Kč
+                    </div>
+                </div>
+                */
