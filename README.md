@@ -18,11 +18,11 @@ Klientské aplikace v Javascriptu - semestrální práce 2023/2024
         price: 120.00,
         operation-type: "Buy"
     }]
-    
-    "CurrentShares": 50,
-    "AverageOpenPrice": 132.00,
+    // these are calculated beforehand and updated only if the under value changes or the change is requested -> GET current market price -> market value change
+    "TotalShares": 50, // sum of shares of all transactions
+    "AverageOpenPrice": 132.00, // average price of bought shares -> might not use this 
     currMarketPrice: 983.32,
-    "MarketValue": 7500.00,
+    "MarketValue": 7500.00, // total 
     "UnrealizedGainLoss": 900.00
 }
 
