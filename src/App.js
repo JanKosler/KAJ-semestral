@@ -13,9 +13,11 @@ import ButtonSimple from './view/button/ButtonSimple';
 
 import InfoCard from './view/card/InfoCard';
 import Gallery from './view/mainGallery/Gallery.js';
-import LargeGraph from './view/graph/LargeGraph.js';
+import LargeGraph from './view/graph/SectorGraph.js';
+import PortfolioScreen from './view/screens/PortfolioScreen.js';
 
 
+import Card from './view/card/Card.js';
 
 function App() {
   // Add the imported icons to the library
@@ -35,7 +37,7 @@ function App() {
         <NavItem href="/lol">Dividends</NavItem>
       </Nav>
       <div style={{ padding: 100 + 'px', height: 2000 + "px", width: 100 + "%" }}>
-          <LargeGraph />
+        <PortfolioScreen />
       </div>
     </div >
   );

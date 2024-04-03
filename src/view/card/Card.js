@@ -1,3 +1,5 @@
+import './card.css';
+
 export default function Card({ bgColor, href, children }) {
     if (!bgColor) {
         bgColor = "bg-white";
@@ -5,9 +7,10 @@ export default function Card({ bgColor, href, children }) {
 
     return (
         <a href={href}>
-            <div className={`${bgColor} max-w-sm p-6 border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700`} >
+            <div className={`${bgColor} max-w-sm p-6 rounded-lg shadow`} >
                 {children}
             </div >
         </a>
     );
 }
+
