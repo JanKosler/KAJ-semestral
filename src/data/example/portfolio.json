@@ -1,0 +1,112 @@
+{
+  "holdings": [
+    {
+      "symbol": "AAPL",
+      "name": "Apple Inc.",
+      "currency": "USD",
+      "sector": "Technology",
+      "transactions": [
+        {
+          "date": "2022-06-05",
+          "volume": 46,
+          "price": 140,
+          "operation-type": "Buy"
+        },
+        {
+          "date": "2022-09-29",
+          "volume": 40,
+          "price": 170,
+          "operation-type": "Buy"
+        }
+      ],
+      "currMarketPrice": 174.5
+    },
+    {
+      "symbol": "NVDA",
+      "name": "Nvidia",
+      "currency": "USD",
+      "sector": "Technology",
+      "transactions": [
+        {
+          "date": "2022-04-16",
+          "volume": 49,
+          "price": 310,
+          "operation-type": "Buy"
+        },
+        {
+          "date": "2022-06-09",
+          "volume": 15,
+          "price": 290,
+          "operation-type": "Buy"
+        },
+        {
+          "date": "2023-01-28",
+          "volume": 45,
+          "price": 290,
+          "operation-type": "Buy"
+        }
+      ],
+      "currMarketPrice": 983.32
+    },
+    {
+      "symbol": "INTC",
+      "name": "Intel Corporation",
+      "currency": "USD",
+      "sector": "Technology",
+      "transactions": [
+        {
+          "date": "2022-04-25",
+          "volume": 43,
+          "price": 70,
+          "operation-type": "Buy"
+        },
+        {
+          "date": "2022-06-19",
+          "volume": 44,
+          "price": 40,
+          "operation-type": "Buy"
+        },
+        {
+          "date": "2022-08-20",
+          "volume": 50,
+          "price": 60,
+          "operation-type": "Buy"
+        },
+        {
+          "date": "2022-08-30",
+          "volume": 43,
+          "price": 70,
+          "operation-type": "Buy"
+        }
+      ],
+      "currMarketPrice": 48.76
+    },
+    {
+      "symbol": "AMZN",
+      "name": "Amazon.com, Inc.",
+      "currency": "USD",
+      "sector": "Consumer Discretionary",
+      "transactions": [
+        {
+          "date": "2022-06-11",
+          "volume": 18,
+          "price": 2020,
+          "operation-type": "Buy"
+        },
+        {
+          "date": "2022-06-14",
+          "volume": 42,
+          "price": 2010,
+          "operation-type": "Buy"
+        },
+        {
+          "date": "2022-07-08",
+          "volume": 28,
+          "price": 2010,
+          "operation-type": "Buy"
+        }
+      ],
+      "currMarketPrice": 3000.33
+    }
+  ]
+}

@@ -24,7 +24,7 @@ function App() {
   library.add(fas, faTwitter, faFontAwesome);
 
   return (
-    <div className="bg-zinc-50">
+    <div className="bg-gray-50">
       <Nav
         buttons={
           <>

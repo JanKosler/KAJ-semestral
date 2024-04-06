@@ -1,11 +1,11 @@
 import React from 'react';
-import styled from 'styled-components';
 
-
-const SectorGraph = ({ data }) => (
-  <div>
-  </div>
-);
+const SectorGraph = ({ data }) => {
+  return (
+    <>
+    </>
+  );
+};
 
 
 export default SectorGraph;

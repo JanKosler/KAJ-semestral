@@ -1,38 +1,45 @@
 import React from 'react';
-import LargeTable from '../graph/LargeTable.tsx';
+import LargeTable from '../graph/LargeTable.js';
+
+import data from '../../data/example/portfolio.json';
+import SectorGraph from '../graph/SectorGraph.js';
+import SectionBenchmark from '../graph/SectionBenchmark.js';
+
+const holdings = data.holdings;
+
+const transformHoldingToHoldingsItem = (holding) => {
+    const totalVolume = holding.transactions.reduce((acc, transaction) => acc + transaction.volume, 0);
+    const totalCost = holding.transactions.reduce((acc, transaction) => acc + (transaction.price * transaction.volume), 0);
+    const averageOpenPrice = totalCost / totalVolume;
+    const grossPL = (holding.currMarketPrice - averageOpenPrice) * totalVolume;
+
+    return {
+        name: holding.name,
+        ticker: holding.symbol,
+        sector: holding.sector,
+        openPrice: averageOpenPrice.toFixed(2),
+        volume: totalVolume,
+        marketPrice: holding.currMarketPrice.toFixed(2),
+        grossPL: grossPL.toFixed(2),
+    };
+}
+
 
 const PortfolioScreen = () => {
-    const data = [
-        {
-            name: 'Nvidia',
-            ticker: 'NVDA.US',
-            openPrice: 934.23,
-            volume: 8,
-            marketPrice: 983.32,
-            grossPL: 23234,
-        },
-        {
-            name: 'Apple',
-            ticker: 'INTC.US',
-            openPrice: 43.45,
-            volume: 45,
-            marketPrice: 60.32,
-            grossPL: 2323,
-        },
-        {
-            name: 'Intel',
-            ticker: 'AAPL.US',
-            openPrice: 171.23,
-            volume: 4,
-            marketPrice: 190.23,
-            grossPL: -123213,
-        },
-    ];
+    const nndata = holdings.map(transformHoldingToHoldingsItem);
 
     return (
-        <LargeTable data={data}>
+        <div className='max-w-5xl mx-auto mt-5'>
+          <LargeTable data={nndata}>
 
-        </LargeTable>
+          </LargeTable>
+          <SectorGraph data={nndata}>
+
+          </SectorGraph>
+          <SectionBenchmark>
+
+          </SectionBenchmark>
+        </div>
     );
 };
 
