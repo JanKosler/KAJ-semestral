@@ -5,28 +5,42 @@ import data from '../../data/example/portfolio.json';
 import SectorGraph from '../graph/SectorGraph.js';
 import SectionBenchmark from '../graph/SectionBenchmark.js';
 
-const holdings = data.holdings;
+const portfolio = data.holdings;
 
-const transformHoldingToHoldingsItem = (holding) => {
-    const totalVolume = holding.transactions.reduce((acc, transaction) => acc + transaction.volume, 0);
-    const totalCost = holding.transactions.reduce((acc, transaction) => acc + (transaction.price * transaction.volume), 0);
+const transformPortfolioToDisplayFormat = (portfolioItem) => {
+    const totalVolume = portfolioItem.transactions.reduce((acc, transaction) => acc + transaction.volume, 0);
+    const totalCost = portfolioItem.transactions.reduce((acc, transaction) => acc + (transaction.price * transaction.volume), 0);
     const averageOpenPrice = totalCost / totalVolume;
-    const grossPL = (holding.currMarketPrice - averageOpenPrice) * totalVolume;
+    const grossPL = (portfolioItem.currMarketPrice - averageOpenPrice) * totalVolume;
 
     return {
-        name: holding.name,
-        ticker: holding.symbol,
-        sector: holding.sector,
+        name: portfolioItem.name,
+        ticker: portfolioItem.symbol,
+        sector: portfolioItem.sector,
+        currency: portfolioItem.currency,
         openPrice: averageOpenPrice.toFixed(2),
         volume: totalVolume,
-        marketPrice: holding.currMarketPrice.toFixed(2),
-        grossPL: grossPL.toFixed(2),
+        marketPrice: portfolioItem.currMarketPrice.toFixed(2),
+        grossPL: grossPL.toFixed(2), 
     };
 }
 
+const addPortfolioPercent = (portfolioItem, wholePortfolioValue) => {
+    console.log(wholePortfolioValue);
+    const percent = ((portfolioItem.volume * portfolioItem.marketPrice) / wholePortfolioValue) * 100;
+    console.log(percent);   
+    return {
+        ...portfolioItem,
+        portfolioPercent: percent.toFixed(2),
+    };
+    
+};
 
 const PortfolioScreen = () => {
-    const nndata = holdings.map(transformHoldingToHoldingsItem);
+    const ndata = portfolio.map(transformPortfolioToDisplayFormat);
+
+    const wholePortfolioValue = ndata.reduce((acc, item) => acc + (item.volume * item.marketPrice), 0);
+    const nndata = ndata.map(item => addPortfolioPercent(item, wholePortfolioValue));
 
     return (
         <div className='max-w-5xl mx-auto mt-5'>

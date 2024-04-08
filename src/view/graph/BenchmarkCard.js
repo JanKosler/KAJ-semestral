@@ -5,6 +5,9 @@ import { GoPlus } from "react-icons/go";
 
 import { CardBase } from '../card/StyledComponents';
 
+import {GetValueColor, FormatCurrency} from '../utils/Utils';
+
+
 const CardContainer = styled(CardBase).attrs({})`
     display: flex;
     flex-direction: column;
@@ -42,26 +45,11 @@ const BenchmarkCard = ({ benchmarkName, percentValue, value, currencyCode, blank
     return (
         <CardContainer>
             <BenchmarkName>{benchmarkName}</BenchmarkName>
-            <Percent className={getCurrencyColor(value)}>{percentValue}%</Percent>
+            <Percent className={GetValueColor(value)}>{percentValue}%</Percent>
 
-            <Value className={`${getCurrencyColor(value)}`}> 
-                <FormatCurrency amount={value} currencyCode={currencyCode} /> 
-            </Value>
+            <Value className={GetValueColor(value)}> {FormatCurrency(value,currencyCode)} </Value>
         </CardContainer>
     );
-};
-
-const getCurrencyColor = (percentValue) => {
-    let color = percentValue > 0 ? 'text-green-500' : 'text-red-500';
-    color = percentValue === 0 ? 'text-gray-700' : color;
-
-    return color;
-};
-
-const FormatCurrency = ({ amount, currencyCode }) => {
-  // Using the Intl.NumberFormat object to format the number
-  const formattedAmount = new Intl.NumberFormat('en-IE', { style: 'currency', currency: currencyCode }).format(amount);
-  return formattedAmount;
 };
 
 export default BenchmarkCard;

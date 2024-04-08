@@ -19,7 +19,7 @@
           "operation-type": "Buy"
         }
       ],
-      "currMarketPrice": 174.5
+      "currMarketPrice": 169.58
     },
     {
       "symbol": "NVDA",
@@ -29,24 +29,24 @@
       "transactions": [
         {
           "date": "2022-04-16",
-          "volume": 49,
-          "price": 310,
+          "volume": 5,
+          "price": 600,
           "operation-type": "Buy"
         },
         {
           "date": "2022-06-09",
-          "volume": 15,
-          "price": 290,
+          "volume": 5,
+          "price": 700,
           "operation-type": "Buy"
         },
         {
           "date": "2023-01-28",
-          "volume": 45,
-          "price": 290,
+          "volume": 15,
+          "price": 800,
           "operation-type": "Buy"
         }
       ],
-      "currMarketPrice": 983.32
+      "currMarketPrice": 880.08
     },
     {
       "symbol": "INTC",
@@ -79,7 +79,7 @@
           "operation-type": "Buy"
         }
       ],
-      "currMarketPrice": 48.76
+      "currMarketPrice": 38.71
     },
     {
       "symbol": "AMZN",
@@ -89,19 +89,19 @@
       "transactions": [
         {
           "date": "2022-06-11",
-          "volume": 18,
+          "volume": 2,
           "price": 2020,
           "operation-type": "Buy"
         },
         {
           "date": "2022-06-14",
-          "volume": 42,
+          "volume": 3,
           "price": 2010,
           "operation-type": "Buy"
         },
         {
           "date": "2022-07-08",
-          "volume": 28,
+          "volume": 1,
           "price": 2010,
           "operation-type": "Buy"
         }

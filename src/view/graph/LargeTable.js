@@ -4,6 +4,8 @@ import styled from 'styled-components';
 import { CardBase, SectionBase } from '../card/StyledComponents.js';
 // Assuming global styles or an imported CSS file handles Tailwind directives
 
+import {GetValueColor, FormatCurrency} from '../utils/Utils';
+
 const CardContainer = styled(CardBase).attrs({})`
     margin: 2rem 0 !important;
 `;
@@ -49,7 +51,8 @@ const LargeTable = ({ data }) => {
                         <Th>Open price</Th>
                         <Th>Volume</Th>
                         <Th>Market price</Th>
-                        <Th>gross P/L</Th>
+                        <Th>Net profit/loss</Th>
+                        <Th>%</Th>
                     </Tr>
                 </Thead>
                 <Tbody>
@@ -57,10 +60,11 @@ const LargeTable = ({ data }) => {
                         <Tr key={index} >
                             <ProductName>{item.name}</ProductName>
                             <Td>{item.ticker}</Td>
-                            <Td>{item.openPrice}</Td>
+                            <Td>{FormatCurrency(item.openPrice, item.currency)}</Td>
                             <Td>{item.volume}</Td>
-                            <Td>{item.marketPrice}</Td>
-                            <Td>{item.grossPL}</Td>
+                            <Td>{FormatCurrency(item.marketPrice, item.currency)}</Td>
+                            <Td className={GetValueColor(item.grossPL)}>{FormatCurrency(item.grossPL, item.currency)}</Td>
+                            <Td>{item.portfolioPercent} %</Td>
                         </Tr>
                     ))}
                 </Tbody>
