@@ -7,6 +7,29 @@ import SectionBenchmark from '../graph/SectionBenchmark.js';
 
 const portfolio = data.holdings;
 
+const PortfolioScreen = () => {
+    const ndata = portfolio.map(transformPortfolioToDisplayFormat);
+
+    const wholePortfolioValue = ndata.reduce((acc, item) => acc + (item.volume * item.marketPrice), 0);
+    const nndata = ndata.map(item => addPortfolioPercent(item, wholePortfolioValue));
+
+    return (
+        <div className='max-w-5xl mx-auto mt-5'>
+          <LargeTable data={nndata}>
+
+          </LargeTable>
+          <SectorGraph data={nndata}>
+
+          </SectorGraph>
+          <SectionBenchmark>
+
+          </SectionBenchmark>
+        </div>
+    );
+};
+
+export default PortfolioScreen;
+
 const transformPortfolioToDisplayFormat = (portfolioItem) => {
     const totalVolume = portfolioItem.transactions.reduce((acc, transaction) => acc + transaction.volume, 0);
     const totalCost = portfolioItem.transactions.reduce((acc, transaction) => acc + (transaction.price * transaction.volume), 0);
@@ -35,26 +58,3 @@ const addPortfolioPercent = (portfolioItem, wholePortfolioValue) => {
     };
     
 };
-
-const PortfolioScreen = () => {
-    const ndata = portfolio.map(transformPortfolioToDisplayFormat);
-
-    const wholePortfolioValue = ndata.reduce((acc, item) => acc + (item.volume * item.marketPrice), 0);
-    const nndata = ndata.map(item => addPortfolioPercent(item, wholePortfolioValue));
-
-    return (
-        <div className='max-w-5xl mx-auto mt-5'>
-          <LargeTable data={nndata}>
-
-          </LargeTable>
-          <SectorGraph data={nndata}>
-
-          </SectorGraph>
-          <SectionBenchmark>
-
-          </SectionBenchmark>
-        </div>
-    );
-};
-
-export default PortfolioScreen;

@@ -8,6 +8,29 @@ import { CardBase } from '../card/StyledComponents';
 import {GetValueColor, FormatCurrency} from '../utils/Utils';
 
 
+
+
+const BenchmarkCard = ({ benchmarkName, percentValue, value, currencyCode, blank }) => {
+    if (blank) {
+        return (
+            <CardContainer>
+                <GoPlus size={24} className="text-gray-500 " />
+                <BenchmarkName>Add a benchmark</BenchmarkName>
+            </CardContainer>
+        );
+    }
+    return (
+        <CardContainer>
+            <BenchmarkName>{benchmarkName}</BenchmarkName>
+            <Percent className={GetValueColor(value)}>{percentValue}%</Percent>
+
+            <Value className={GetValueColor(value)}> {FormatCurrency(value,currencyCode)} </Value>
+        </CardContainer>
+    );
+};
+
+export default BenchmarkCard;
+
 const CardContainer = styled(CardBase).attrs({})`
     display: flex;
     flex-direction: column;
@@ -32,24 +55,3 @@ const Percent = styled.span`
 const Value = styled.span`
     font-size: 16px;
 `;
-
-const BenchmarkCard = ({ benchmarkName, percentValue, value, currencyCode, blank }) => {
-    if (blank) {
-        return (
-            <CardContainer>
-                <GoPlus size={24} className="text-gray-500 " />
-                <BenchmarkName>Add a benchmark</BenchmarkName>
-            </CardContainer>
-        );
-    }
-    return (
-        <CardContainer>
-            <BenchmarkName>{benchmarkName}</BenchmarkName>
-            <Percent className={GetValueColor(value)}>{percentValue}%</Percent>
-
-            <Value className={GetValueColor(value)}> {FormatCurrency(value,currencyCode)} </Value>
-        </CardContainer>
-    );
-};
-
-export default BenchmarkCard;

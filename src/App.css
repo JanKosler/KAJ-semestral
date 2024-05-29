@@ -2,8 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+/** Satohshi font */
+@import url('https://fonts.googleapis.com/css2?family=Satoshi&display=swap');
+
 .App {
-  font-family: Satoshi;
+  font-family: Satoshi, Arial, sans-serif;
   text-align: center;
 }
 

@@ -8,8 +8,10 @@ import { faTwitter, faFontAwesome } from '@fortawesome/free-brands-svg-icons'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 // pages
-import Login from './pages/auth/index.jsx';
+import LoginPage from './pages/auth/index.jsx';
+import SignUpPage from './pages/auth/signup.jsx';
 import Homepage from './pages/portfolio/index.jsx';
+import { AuthProvider } from './context/auth/index.js';
 
 const App = () => {
   // Add the imported icons to the library
@@ -17,12 +19,15 @@ const App = () => {
 
   return (
     <div className="App">
-      <Router>
-        <Routes>
-          <Route path="/" exact element={ <Login /> } ></Route>
-          <Route path="home" element={ <Homepage /> } ></Route>
-        </Routes>
-      </Router>
+      <AuthProvider>
+        <Router>
+          <Routes>
+            <Route path="/" exact element={ <LoginPage /> } ></Route>
+            <Route path="signup" element={ <SignUpPage /> } ></Route>
+            <Route path="home" element={ <Homepage /> } ></Route>
+          </Routes>
+        </Router>
+      </AuthProvider>
     </div>
   );
   

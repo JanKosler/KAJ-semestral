@@ -6,38 +6,6 @@ import { CardBase, SectionBase } from '../card/StyledComponents.js';
 
 import {GetValueColor, FormatCurrency} from '../utils/Utils.js';
 
-const CardContainer = styled(CardBase).attrs({})`
-    margin: 2rem 0 !important;
-`;
-
-
-const Table = styled.table.attrs({
-    className: "w-full text-sm text-left text-gray-500",
-})``;
-
-const Thead = styled.thead.attrs({
-    className: "text-xs text-gray-700 uppercase",
-})``;
-
-const Tbody = styled.tbody.attrs({
-    className: "bg-transparent",
-})``;
-
-const Tr = styled.tr.attrs({
-    className: `border-b bg-transparent`,
-})``;
-
-const Th = styled.th.attrs({
-    className: "px-6 py-3",
-})``;
-
-const Td = styled.td.attrs({
-    className: "px-6 py-4",
-})``;
-
-const ProductName = styled.th.attrs({
-    className: "px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white",
-})``;
 
 const LargeTable = ({ data }) => {
 
@@ -76,3 +44,35 @@ const LargeTable = ({ data }) => {
 };
 
 export default LargeTable;
+
+const CardContainer = styled(CardBase).attrs({})`
+    margin: 2rem 0 !important;
+`;
+
+const Table = styled.table.attrs({
+    className: "w-full text-sm text-left text-gray-500",
+})``;
+
+const Thead = styled.thead.attrs({
+    className: "text-xs text-gray-700 uppercase",
+})``;
+
+const Tbody = styled.tbody.attrs({
+    className: "bg-transparent",
+})``;
+
+const Tr = styled.tr.attrs({
+    className: `border-b bg-transparent`,
+})``;
+
+const Th = styled.th.attrs({
+    className: "px-6 py-3",
+})``;
+
+const Td = styled.td.attrs({
+    className: "px-6 py-4",
+})``;
+
+const ProductName = styled.th.attrs({
+    className: "px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white",
+})``;

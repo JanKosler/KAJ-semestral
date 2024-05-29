@@ -1,10 +1,7 @@
 import Card from "./Card";
 import "../button/button.css";
 
-
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-
 
 const InfoCard = ({ title, href, children }) => {
     return (

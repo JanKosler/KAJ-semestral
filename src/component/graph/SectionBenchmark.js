@@ -4,11 +4,6 @@ import styled from 'styled-components';
 import { SectionBase } from '../card/StyledComponents';
 import BenchmarkCard from './BenchmarkCard';
 
-const SectionGrid = styled(SectionBase).attrs({})`
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-gap: 1rem;
-`;
 
 const SectionBenchmark = ({ benchmarkData }) => (
     <SectionGrid>
@@ -36,5 +31,10 @@ const SectionBenchmark = ({ benchmarkData }) => (
     </SectionGrid>
 );
 
-
 export default SectionBenchmark;
+
+const SectionGrid = styled(SectionBase).attrs({})`
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 1rem;
+`;
