@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function PayrollInput({ label, id, initialValue, onChange }) {
+const PayrollInput = ({ label, id, initialValue, onChange }) => {
 
     const [value, setValue] = useState(initialValue);
 
@@ -31,3 +31,5 @@ export default function PayrollInput({ label, id, initialValue, onChange }) {
         </div>
     );
 }
+
+export default PayrollInput;

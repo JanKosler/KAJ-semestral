@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import PayrollInput from './PayrollInput';
 
-export default function PayrollCalculatorForm({ children }) {
+const PayrollCalculatorForm = ({ children }) => {
     const [yearlyPay, setYearlyPay] = useState(0);
     const [monthlyPay, setMonthlyPay] = useState(0);
     const [weeklyPay, setWeeklyPay] = useState(0);
@@ -81,3 +81,5 @@ export default function PayrollCalculatorForm({ children }) {
         </form>
     );
 }
+
+export default PayrollCalculatorForm;

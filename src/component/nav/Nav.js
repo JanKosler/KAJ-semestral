@@ -1,5 +1,5 @@
 
-export default function Nav({ buttons, children }) {
+const Nav = ({ buttons, children }) => {
     return (
         <nav className="bg-zinc-50 fixed w-full z-20 top-0 start-0 border-b border-gray-200">
             <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
@@ -24,3 +24,5 @@ export default function Nav({ buttons, children }) {
         </nav>
     )
 }
+
+export default Nav;

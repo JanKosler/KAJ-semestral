@@ -1,5 +1,5 @@
 
-export default function Gallery({ child1, child2, child3, child4, child5, child6 }) {
+const Gallery = ({ child1, child2, child3, child4, child5, child6 }) => {
     return (<section class="text-gray-600 body-font">
         <div class="container px-5 py-24 mx-auto flex flex-wrap">
             <div class="flex flex-wrap md:-m-2 -m-1">
@@ -18,3 +18,5 @@ export default function Gallery({ child1, child2, child3, child4, child5, child6
     </section>
     );
 }
+
+export default Gallery;

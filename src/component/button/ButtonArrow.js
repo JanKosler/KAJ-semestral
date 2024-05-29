@@ -1,7 +1,7 @@
 import "./button.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export default function ButtonArrow({ children }) {
+const ButtonArrow = ({ children }) => {
     return (
         <button type="button" class="inline-flex items-center px-5 py-2.5 text-sm font-medium text-center text-white bg-blue-700 rounded-full hover:bg-blue-800">
             Get Started
@@ -11,6 +11,8 @@ export default function ButtonArrow({ children }) {
         </button>
     );
 };
+
+export default ButtonArrow;
 
 /*
 Custom made arrow icon

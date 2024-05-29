@@ -6,7 +6,7 @@ import "../button/button.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 
-export default function InfoCard({ title, href, children }) {
+const InfoCard = ({ title, href, children }) => {
     return (
         <Card href={href}>
             <div className="w-full p-1 flex flex-wrap">
@@ -42,6 +42,7 @@ export default function InfoCard({ title, href, children }) {
     );
 }
 
+export default InfoCard;
 /*
                 <div className="w-full flex justify-start items-center mt-6">
                     <div className="text-2xl font-bold text-green-600">

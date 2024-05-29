@@ -5,60 +5,27 @@ import { fas } from '@fortawesome/free-solid-svg-icons'
 import { faTwitter, faFontAwesome } from '@fortawesome/free-brands-svg-icons'
 
 
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
-import Nav from './view/nav/Nav';
-import NavItem from './view/nav/NavItem';
+// pages
+import Login from './pages/auth/index.jsx';
+import Homepage from './pages/portfolio/index.jsx';
 
-import ButtonSimple from './view/button/ButtonSimple';
-
-import InfoCard from './view/card/InfoCard';
-import Gallery from './view/mainGallery/Gallery.js';
-import LargeGraph from './view/graph/SectorGraph.js';
-import PortfolioScreen from './view/screens/PortfolioScreen.js';
-
-
-import Card from './view/card/Card.js';
-
-function App() {
+const App = () => {
   // Add the imported icons to the library
   library.add(fas, faTwitter, faFontAwesome);
 
   return (
-    <div className="bg-gray-50">
-      <Nav
-        buttons={
-          <>
-            <ButtonSimple>Login</ButtonSimple>
-            <ButtonSimple>Register</ButtonSimple>
-          </>
-        }>
-        <NavItem href="/overview">Investing</NavItem>
-        <NavItem href="/lol">Profits</NavItem>
-        <NavItem href="/lol">Dividends</NavItem>
-      </Nav>
-      <div style={{ padding: 100 + 'px', height: 2000 + "px", width: 100 + "%" }}>
-        <PortfolioScreen />
-      </div>
-    </div >
+    <div className="App">
+      <Router>
+        <Routes>
+          <Route path="/" exact element={ <Login /> } ></Route>
+          <Route path="home" element={ <Homepage /> } ></Route>
+        </Routes>
+      </Router>
+    </div>
   );
+  
 }
-
-/*
-        <Gallery
-          child1={<InfoCard title="realizovaný zisk" href="/lol" />}
-          child2={<InfoCard title="realizovaný zisk" href="/lol" />}
-          child3={<InfoCard title="realizovaný zisk" href="/lol" />}
-          child4={<InfoCard title="realizovaný zisk" href="/lol" />}
-          child5={<InfoCard title="realizovaný zisk" href="/lol" />}
-          child6={<InfoCard title="realizovaný zisk" href="/lol" />}
-        />
-        <InfoCard title="realizovaný zisk" href="/lol">
-        </InfoCard>
-
-
-        <InfoCard title="realizovaný zisk" href="/lol">
-          <p>World</p>
-        </InfoCard>
-*/
 
 export default App;

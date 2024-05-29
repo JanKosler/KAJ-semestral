@@ -1,4 +1,4 @@
-export default function NavItem({ href, isActive, children }) {
+const NavItem = ({ href, isActive, children }) => {
     return (
         <li>
             <a href={href}
@@ -8,3 +8,5 @@ export default function NavItem({ href, isActive, children }) {
         </li>
     )
 }
+
+export default NavItem;

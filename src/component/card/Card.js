@@ -1,6 +1,6 @@
 import './card.css';
 
-export default function Card({ bgColor, href, children }) {
+const Card = ({ bgColor, href, children }) => {
     if (!bgColor) {
         bgColor = "bg-white";
     }
@@ -13,4 +13,6 @@ export default function Card({ bgColor, href, children }) {
         </a>
     );
 }
+
+export default Card;
 

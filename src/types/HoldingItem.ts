@@ -6,5 +6,5 @@ export default interface HoldingsItem {
     volume: number;
     marketPrice: string;
     grossPL: string;
-    percent: string;
+    portfolioPercent: string;
 }
