@@ -1,31 +1,53 @@
 import React from 'react';
 
-
 import ButtonSimple from '../../component/button/ButtonSimple';
 import Nav from '../../component/nav/Nav';
 import PortfolioScreen from '../../component/screens/PortfolioScreen';
 import NavItem from '../../component/nav/NavItem';
+import { useAuth } from '../../context/auth';
+import { doSignOut } from '../../config/auth';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Homepage = () => {
-    return (
-        <div className="bg-gray-50">
-          <Nav
-            buttons={
+  const navigate = useNavigate();
+  const { userLoggedIn } = useAuth();
+
+  return (
+    <div className="bg-gray-50">
+      <Nav
+        buttons={
+          <>
+            {userLoggedIn ? (
+              <>
+                <ButtonSimple
+                  onClick={() => {
+                    doSignOut().then(() => {
+                      navigate('/login');
+                    });
+                  }}
+                >
+                  Logout
+                </ButtonSimple>
+              </>
+            ) : (
               <>
                 <ButtonSimple>Login</ButtonSimple>
                 <ButtonSimple>Register</ButtonSimple>
               </>
-            }>
-            <NavItem href="/overview">Investing</NavItem>
-            <NavItem href="/lol">Profits</NavItem>
-            <NavItem href="/lol">Dividends</NavItem>
-          </Nav>
-          <div style={{ padding: 100 + 'px', height: 2000 + "px", width: 100 + "%" }}>
-            <PortfolioScreen />
-          </div>
-        </div >
+            )}
+          </>
+        }
+      >
+        <NavItem href="/overview">Investing</NavItem>
+        <NavItem href="/lol">Profits</NavItem>
+        <NavItem href="/lol">Dividends</NavItem>
+      </Nav>
+      <div style={{ padding: 100 + 'px', height: 2000 + 'px', width: 100 + '%' }}>
+        <PortfolioScreen />
+      </div>
+    </div>
   );
-}
+};
 
 /*
 <Gallery

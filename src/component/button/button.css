@@ -3,62 +3,61 @@
 @tailwind utilities;
 
 @layer base {
-    .buttonArrow1 {
-        justify-content: space-between;
-        width: unset;
-        position: relative;
-        padding: 0.9rem;
-    }
+  .buttonArrow1 {
+    justify-content: space-between;
+    width: unset;
+    position: relative;
+    padding: 0.9rem;
+  }
 
-    .buttonArrow {
-        -webkit-box-align: center;
-        align-items: center;
-        cursor: pointer;
-        border-radius: 20rem;
-        display: inline-flex;
-        font-family: Satoshi;
-        font-weight: 700;
-        -webkit-box-pack: justify;
-        justify-content: space-between;
-        width: unset;
-        outline: none;
-        position: relative;
-        text-decoration: none;
-        transition: all 0.2s ease-in-out 0s;
-        background-color: rgb(35, 29, 97);
-        border: 0.1rem solid rgb(35, 29, 97);
-        color: rgb(255, 255, 255);
-        padding: 0.9rem;
-    }
+  .buttonArrow {
+    -webkit-box-align: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 20rem;
+    display: inline-flex;
+    font-family: Satoshi;
+    font-weight: 700;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    width: unset;
+    outline: none;
+    position: relative;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out 0s;
+    background-color: rgb(35, 29, 97);
+    border: 0.1rem solid rgb(35, 29, 97);
+    color: rgb(255, 255, 255);
+    padding: 0.9rem;
+  }
 
-    .buttonArrow span {
-        display: flex;
-        -webkit-box-align: center;
-        align-items: center;
-        font-size: 2rem;
-        line-height: 2rem;
-        padding: 0rem 2.7rem;
-        height: 4.8rem;
-    }
+  .buttonArrow span {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    font-size: 2rem;
+    line-height: 2rem;
+    padding: 0rem 2.7rem;
+    height: 4.8rem;
+  }
 
-    .buttonArrow div {
-        display: inline-flex;
-        position: relative;
-        border-radius: 100%;
-        -webkit-box-align: center;
-        align-items: center;
-        -webkit-box-pack: center;
-        justify-content: center;
-        color: rgb(255, 255, 255);
-        cursor: unset;
-        width: 4.8rem;
-        height: 4.8rem;
-        background: rgba(255, 255, 255, 0.12);
-        margin-left: 2rem;
-    }
+  .buttonArrow div {
+    display: inline-flex;
+    position: relative;
+    border-radius: 100%;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    color: rgb(255, 255, 255);
+    cursor: unset;
+    width: 4.8rem;
+    height: 4.8rem;
+    background: rgba(255, 255, 255, 0.12);
+    margin-left: 2rem;
+  }
 
-
-    .arrowIconBorder {
-        border-width: 1px;
-    }
+  .arrowIconBorder {
+    border-width: 1px;
+  }
 }

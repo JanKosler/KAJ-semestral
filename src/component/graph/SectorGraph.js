@@ -1,11 +1,7 @@
 import React from 'react';
 
 const SectorGraph = ({ data }) => {
-  return (
-    <>
-    </>
-  );
+  return <></>;
 };
-
 
 export default SectorGraph;

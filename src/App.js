@@ -1,9 +1,8 @@
 import './App.css';
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { fas } from '@fortawesome/free-solid-svg-icons'
-import { faTwitter, faFontAwesome } from '@fortawesome/free-brands-svg-icons'
-
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { faTwitter, faFontAwesome } from '@fortawesome/free-brands-svg-icons';
 
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
@@ -22,15 +21,15 @@ const App = () => {
       <AuthProvider>
         <Router>
           <Routes>
-            <Route path="/" exact element={ <LoginPage /> } ></Route>
-            <Route path="signup" element={ <SignUpPage /> } ></Route>
-            <Route path="home" element={ <Homepage /> } ></Route>
+            <Route path="/" exact element={<LoginPage />}></Route>
+            <Route path="/login" exact element={<LoginPage />}></Route>
+            <Route path="signup" element={<SignUpPage />}></Route>
+            <Route path="home" element={<Homepage />}></Route>
           </Routes>
         </Router>
       </AuthProvider>
     </div>
   );
-  
-}
+};
 
 export default App;
