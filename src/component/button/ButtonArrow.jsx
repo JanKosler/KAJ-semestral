@@ -1,5 +1,4 @@
 import './button.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const ButtonArrow = ({ children, style, onClick }) => {
   return (

@@ -4,10 +4,19 @@ import { auth } from '../../config/firebase-config';
 
 const AuthContext = React.createContext();
 
+/**
+ * useAuth
+ * @returns context with auth
+ */
 export function useAuth() {
   return useContext(AuthContext);
 }
 
+/**
+ * AuthProvider
+ * @param {*} children
+ * @returns
+ */
 export function AuthProvider({ children }) {
   const [userLoggedIn, setUserLoggedIn] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);

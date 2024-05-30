@@ -1,9 +1,9 @@
 import './button.css';
 import styled from 'styled-components';
 
-const ButtonSimple = ({ children, style, onClick }) => {
+const ButtonSimple = ({ children, style, className, onClick }) => {
   return (
-    <Button style={style} onClick={onClick}>
+    <Button style={style} onClick={onClick} className={className}>
       <span>{children}</span>
     </Button>
   );

@@ -4,13 +4,20 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter, faFontAwesome } from '@fortawesome/free-brands-svg-icons';
 
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-// pages
-import LoginPage from './pages/auth/index.jsx';
-import SignUpPage from './pages/auth/signup.jsx';
-import Homepage from './pages/portfolio/index.jsx';
+import Layout from './component/Layout.jsx';
+
 import { AuthProvider } from './context/auth/index.js';
+import routes from './routing/routes.js';
+
+const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Layout />,
+    children: routes,
+  },
+]);
 
 const App = () => {
   // Add the imported icons to the library
@@ -19,14 +26,7 @@ const App = () => {
   return (
     <div className="App">
       <AuthProvider>
-        <Router>
-          <Routes>
-            <Route path="/" exact element={<LoginPage />}></Route>
-            <Route path="/login" exact element={<LoginPage />}></Route>
-            <Route path="signup" element={<SignUpPage />}></Route>
-            <Route path="home" element={<Homepage />}></Route>
-          </Routes>
-        </Router>
+        <RouterProvider router={router}></RouterProvider>
       </AuthProvider>
     </div>
   );
