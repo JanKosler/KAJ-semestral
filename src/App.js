@@ -10,6 +10,7 @@ import Layout from './component/Layout.jsx';
 
 import { AuthProvider } from './context/auth/index.js';
 import routes from './routing/routes.js';
+import ErrorBoundary from './pages/error/ErrorBoundary.js';
 
 const router = createBrowserRouter([
   {
@@ -25,9 +26,11 @@ const App = () => {
 
   return (
     <div className="App">
-      <AuthProvider>
-        <RouterProvider router={router}></RouterProvider>
-      </AuthProvider>
+      <ErrorBoundary>
+        <AuthProvider>
+          <RouterProvider router={router}></RouterProvider>
+        </AuthProvider>
+      </ErrorBoundary>
     </div>
   );
 };

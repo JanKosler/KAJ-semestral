@@ -5,6 +5,7 @@ import Header from './nav/Header';
 
 import styled from 'styled-components';
 import PathConstants from '../routing/paths';
+import LoadingPage from '../pages/loading';
 
 const Layout = ({ children }) => {
   const navigate = useNavigate();
@@ -27,7 +28,7 @@ const Layout = ({ children }) => {
         <Header />
       </HeaderContainer>
       <Page>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<LoadingPage />}>
           <Outlet />
         </Suspense>
       </Page>
@@ -53,8 +54,9 @@ const HeaderContainer = styled.div`
 `;
 
 const Page = styled.div.attrs({
-  className: 'pb-20 bg-gray-50 min-h-screen',
+  className: 'bg-gray-50',
 })`
   grid-area: body;
   overflow-y: auto;
+  min-height: calc(100vh - 73px);
 `;

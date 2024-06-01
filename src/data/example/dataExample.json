@@ -1,0 +1,56 @@
+{
+  "userId": "fasfadsg2342gafgygarkga",
+  "titles": [
+    {
+      "ticker": "AAPL",
+      "name": "Apple Inc.",
+      "currency": "USD",
+      "sector": "Technology",
+      "transactions": [
+        {
+          "date": "2022-06-05",
+          "quantity": 46,
+          "pricePerUnit": 140,
+          "tradeValue": 6440,
+          "operationType": "BUY"
+        },
+        {
+          "date": "2022-09-29",
+          "quantity": 40,
+          "pricePerUnit": 170,
+          "tradeValue": 6800,
+          "operationType": "BUY"
+        }
+      ]
+    },
+    {
+      "ticker": "NVDA",
+      "name": "Nvidia",
+      "currency": "USD",
+      "sector": "Technology",
+      "transactions": [
+        {
+          "date": "2022-04-16",
+          "quantity": 5,
+          "pricePerUnit": 600,
+          "tradeValue": 3000,
+          "operationType": "BUY"
+        },
+        {
+          "date": "2022-06-09",
+          "quantity": 5,
+          "pricePerUnit": 700,
+          "tradeValue": 3500,
+          "operationType": "BUY"
+        },
+        {
+          "date": "2023-01-28",
+          "quantity": 15,
+          "pricePerUnit": 800,
+          "tradeValue": 12000,
+          "operationType": "SELL"
+        }
+      ]
+    }
+  ]
+}

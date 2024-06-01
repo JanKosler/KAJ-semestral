@@ -28,9 +28,7 @@ const Header = () => {
           }
         >
           <NavItem linkTo={PathConstants.TRANSACTION_NEW}>Add trade</NavItem>
-          <NavItem href="/overview">Investing</NavItem>
-          <NavItem href="/lol">Profits</NavItem>
-          <NavItem href="/lol">Dividends</NavItem>
+          <NavItem linkTo={PathConstants.HOME}>Portfolio</NavItem>
         </Nav>
       ) : (
         <Nav

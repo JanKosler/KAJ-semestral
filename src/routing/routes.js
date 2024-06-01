@@ -6,6 +6,7 @@ const Components = {
   LoginPage: React.lazy(() => import('../pages/auth')),
   RegisterPage: React.lazy(() => import('../pages/auth/signup')),
   AddTransactionPage: React.lazy(() => import('../pages/transactions')),
+  ErrorPage: React.lazy(() => import('../pages/error')),
 };
 
 const routes = [
@@ -24,6 +25,14 @@ const routes = [
   {
     path: PathConstants.TRANSACTION_NEW,
     element: <Components.AddTransactionPage />,
+  },
+  {
+    path: PathConstants.ERROR,
+    element: <Components.ErrorPage />,
+  },
+  {
+    path: '*',
+    element: <Components.ErrorPage />,
   },
 ];
 

@@ -10,15 +10,24 @@ import {
 import ButtonSimple from '../../component/button/ButtonSimple';
 
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
+import { useHoldings } from '../../hooks/useAddTransactionTrade';
+import { useAuth } from '../../context/auth';
 
 const TransactionTradeForm = () => {
+  const { currentUser } = useAuth();
+  const navigate = useNavigate();
+
   const [tradeDate, setTradeDate] = useState('');
-  const [securityID, setSecurityID] = useState('');
-  const [securityIDType, setSecurityIDType] = useState('US_ticker_symbol');
+  const [tickerSymbol, setTickerSymbol] = useState('');
+  const [sector, setSector] = useState('');
   const [quantity, setQuantity] = useState(0);
   const [currencySymbol, setCurrencySymbol] = useState('USD');
   const [unitPrice, setUnitPrice] = useState(0);
   const [tradeValue, setTradeValue] = useState(0);
+
+  const { addOrUpdateHolding } = useHoldings();
 
   useEffect(() => {
     setTradeValue(() => quantity * unitPrice);
@@ -27,15 +36,30 @@ const TransactionTradeForm = () => {
   const onSubmit = async (e) => {
     e.preventDefault();
     console.log('Submiting trade');
-    console.log({
-      tradeDate,
-      securityID,
-      securityIDType,
-      quantity,
-      currencySymbol,
-      unitPrice,
-      tradeValue,
-    });
+    const newHolding = {
+      symbol: tickerSymbol,
+      name: '',
+      currency: 'USD',
+      sector: sector,
+      transaction: {
+        date: tradeDate,
+        quantity: quantity,
+        pricePerUnit: unitPrice,
+        tradeValue: tradeValue.toFixed(2),
+        operationType: quantity > 0 ? 'BUY' : 'SELL',
+      },
+    };
+
+    // Add the trade to the user's holdings
+    addOrUpdateHolding(currentUser.uid, newHolding)
+      .then(() => {
+        console.log('Trade successfully added.');
+        navigate('/'); // Navigate to the homepage on successful addition
+      })
+      .catch((error) => {
+        console.error('Failed to add trade', error);
+        // Optional: Display an error message to the user
+      });
   };
 
   return (
@@ -52,23 +76,47 @@ const TransactionTradeForm = () => {
         />
       </FormItem>
       <FormItem>
-        <FormLabel htmlFor="security_id">Security ID</FormLabel>
+        <FormLabel htmlFor="ticker">Ticker symbol</FormLabel>
         <FormInput
-          id="security_id"
-          name="security_id"
+          id="ticker"
+          name="ticker"
           type="text"
           required
-          value={securityID}
-          onChange={(e) => setSecurityID(e.target.value)}
+          value={tickerSymbol}
+          onChange={(e) => setTickerSymbol(e.target.value)}
         />
       </FormItem>
+      <FormItem>
+        <FormLabel htmlFor="sector">GICS Sector</FormLabel>
+        <FormSelect
+          id="sector"
+          name="sector"
+          type="text"
+          required
+          value={sector}
+          onChange={(e) => setSector(e.target.value)}
+        >
+          <option value="energy">Energy</option>
+          <option value="materials">Materials</option>
+          <option value="industrials">Industrials</option>
+          <option value="consumer-discretionary">Consumer Discretionary</option>
+          <option value="consumer-staples">Consumer Staples</option>
+          <option value="health-care">Health Care</option>
+          <option value="financials">Financials</option>
+          <option value="information-technology">Information Technology</option>
+          <option value="communication-services">Communication Services</option>
+          <option value="utilities">Utilities</option>
+          <option value="real-estate">Real Estate</option>
+        </FormSelect>
+      </FormItem>
+      {/* 
       <FormItem>
         <FormLabel htmlFor="security_id_type">Security ID Type</FormLabel>
         <FormSelect
           id="security_id_type"
           name="security_id_type"
           value={securityIDType}
-          onChange={(e) => setSecurityIDType(e.target.value)}
+          onChange={(e) => setTickerSymbol(e.target.value)}
         >
           <option value="US_ticker_symbol">Ticker symbol</option>
           <option value="isin" disabled>
@@ -77,6 +125,7 @@ const TransactionTradeForm = () => {
         </FormSelect>
         <FormMessage>Currently supporting only US registered stocks and ETFs</FormMessage>
       </FormItem>
+      */}
       <FormItem>
         <FormLabel htmlFor="trade_quantity">Quantity</FormLabel>
         <FormInput
