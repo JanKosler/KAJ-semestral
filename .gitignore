@@ -5,7 +5,7 @@
 /.pnp
 .pnp.js
 
-/src/component/_old
+/src/_old
 
 # environment files
 .env
