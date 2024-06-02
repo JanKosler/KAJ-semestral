@@ -15,10 +15,12 @@ import { useNavigate } from 'react-router-dom';
 
 import { useHoldings } from '../../hooks/useAddTransactionTrade';
 import { useAuth } from '../../context/auth';
+import { usePortfolioData } from '../../provider/PortfolioDataProvider';
 
 const TransactionTradeForm = () => {
   const { currentUser } = useAuth();
   const navigate = useNavigate();
+  const { refreshUserData } = usePortfolioData();
 
   const [tradeDate, setTradeDate] = useState('');
   const [tickerSymbol, setTickerSymbol] = useState('');
@@ -57,6 +59,7 @@ const TransactionTradeForm = () => {
     addOrUpdateHolding(currentUser.uid, newHolding)
       .then(() => {
         console.log('Trade successfully added.');
+        refreshUserData();
         navigate('/'); // Navigate to the homepage on successful addition
       })
       .catch((error) => {

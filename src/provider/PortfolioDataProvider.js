@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback } from 'react';
 import { useAuth } from '../context/auth';
 import PortfolioDataProcessor from '../component/graph/utils/PortfolioDataProcessor';
 import fetchUserData from '../hooks/utils/fetchUserData';
@@ -13,24 +13,30 @@ export const PortfolioDataProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  useEffect(() => {
+  // fetch or refresh user data
+  const refreshUserData = useCallback(() => {
     if (currentUser && currentUser.uid) {
       setIsLoading(true);
       fetchUserData(currentUser.uid)
         .then((data) => {
           setUserData(data);
-          setIsLoading(false); // Confirm this is being hit
+          setIsLoading(false);
         })
         .catch((err) => {
           console.error('Error fetching data:', err);
           setError(err);
-          setIsLoading(false); // Confirm this is being hit
+          setIsLoading(false);
         });
     } else {
-      setIsLoading(false); // Make sure to handle case where currentUser is null
       console.log('No user or user ID available.');
+      setIsLoading(false);
     }
   }, [currentUser]);
+
+  // effect to fetch data on user change
+  useEffect(() => {
+    refreshUserData();
+  }, [refreshUserData]);
 
   useEffect(() => {
     if (userData) {
@@ -48,7 +54,7 @@ export const PortfolioDataProvider = ({ children }) => {
   }, [userData]);
 
   return (
-    <PortfolioDataContext.Provider value={{ dataProcessor, processedData, isLoading, error }}>
+    <PortfolioDataContext.Provider value={{ dataProcessor, processedData, isLoading, error, refreshUserData }}>
       {children}
     </PortfolioDataContext.Provider>
   );
