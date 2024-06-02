@@ -14,10 +14,8 @@ const PorfolioPercentGraph = ({ data }) => {
       {processedData.map((item, index) => (
         <div key={index} className="flex items-center">
           <ColorDot color={item.color}></ColorDot>
-          <span>
-            {item.name}
-            <span className="text-gray-500"> - {item.percentage} %</span>
-          </span>
+          {item.name}
+          <span className="text-gray-500"> - {item.percentage} %</span>
         </div>
       ))}
     </DonutGraphCard>

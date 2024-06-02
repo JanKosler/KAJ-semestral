@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import { CardBase } from '../card/StyledComponents';
+import { CardBase } from '../card/StyledCard.jsx';
 // Assuming global styles or an imported CSS file handles Tailwind directives
 
 import { FormatCurrency } from '../utils/Utils.js';
@@ -26,15 +26,16 @@ const LargeTable = ({ data }) => {
 
   return (
     <CardContainer>
+      <h2>Portfolio</h2>
       <Table>
         <Thead>
           <Tr>
-            <Th abbr="ticker">Ticker symbol</Th>
-            <Th abbr="sector">Sector</Th>
-            <Th abbr="avgOpen">Avg. Open price</Th>
-            <Th abbr="totalVol">Total Volume</Th>
-            <Th abbr="mPrice">Market price</Th>
-            <Th abbr="pPercent">Portfolio percent</Th>
+            <Th>Ticker symbol</Th>
+            <Th>Sector</Th>
+            <Th>Avg. Open price</Th>
+            <Th>Total Volume</Th>
+            <Th>Market price</Th>
+            <Th>Portfolio percent</Th>
             {/* TODO 
             <Th abbr="nProfit">Net profit/loss</Th>
             */}
@@ -42,17 +43,17 @@ const LargeTable = ({ data }) => {
         </Thead>
         <Tbody>
           {data.map((item, index) => (
-            <Tr key={index} $hover={true} onClick={() => handleRowClick(item.ticker)}>
-              <TickerSymbol abbr="ticker">{item.ticker}</TickerSymbol>
-              <Td abbr="sector">{formatGICSSector(item.sector)}</Td>
-              <Td abbr="avgOpen">{FormatCurrency(item.openPrice, 'USD')}</Td>
-              <Td abbr="totalVol">{item.totalVolume}</Td>
-              <Td abbr="mPrice">{/*FormatCurrency(item.marketPrice, 'USD')*/ 'Coming soon...'}</Td>
-              <Td abbr="pPercent">{item.portfolioPercent + ' %'}</Td>
+            <HoverTr key={index} onClick={() => handleRowClick(item.ticker)}>
+              <TickerSymbol>{item.ticker}</TickerSymbol>
+              <Td>{formatGICSSector(item.sector)}</Td>
+              <Td>{FormatCurrency(item.openPrice, 'USD')}</Td>
+              <Td>{item.totalVolume}</Td>
+              <Td>{/*FormatCurrency(item.marketPrice, 'USD')*/ 'Coming soon...'}</Td>
+              <Td>{item.portfolioPercent + ' %'}</Td>
               {/*  TODO 
               <Td abbr="nProfit" className={GetValueColor(item.grossPL)}>{FormatCurrency(item.grossPL, item.currency)}</Td>
               */}
-            </Tr>
+            </HoverTr>
           ))}
         </Tbody>
       </Table>
@@ -78,20 +79,11 @@ const Tbody = styled.tbody.attrs({
   className: 'bg-transparent',
 })``;
 
-const Tr = styled.tr.attrs({
-  className: `border-b bg-transparent`,
-})`
-  cursor: ${({ $hover }) => ($hover ? 'pointer' : 'auto')};
-  &:hover {
-    background-color: ${({ $hover }) => ($hover ? '#eee' : 'transparent')};
-  }
-`;
-
 const Th = styled.th.attrs({
   className: 'px-6 py-3',
 })`
   @media (max-width: 768px) {
-    &[abbr]:not([abbr='ticker']):not([abbr='avgOpen']):not([abbr='totalVol']) {
+    &[abbr]:not(:nth-child(1)):not(:nth-child(3)):not(:nth-child(5)) {
       display: none;
     }
   }
@@ -101,7 +93,7 @@ const Td = styled.td.attrs({
   className: 'px-6 py-4',
 })`
   @media (max-width: 768px) {
-    &[abbr]:not([abbr='ticker']):not([abbr='avgOpen']):not([abbr='totalVol']) {
+    &[abbr]:not(:nth-child(1)):not(:nth-child(3)):not(:nth-child(5)) {
       display: none;
     }
   }
@@ -110,3 +102,14 @@ const Td = styled.td.attrs({
 const TickerSymbol = styled.th.attrs({
   className: 'px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white',
 })``;
+
+const Tr = styled.tr.attrs({
+  className: `border-b bg-transparent`,
+})``;
+
+const HoverTr = styled(Tr)`
+  cursor: pointer;
+  &:hover {
+    background-color: #eee;
+  }
+`;

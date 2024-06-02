@@ -41,13 +41,6 @@ const Nav = ({ buttons, children }) => {
 
 export default Nav;
 
-// Styled components to handle responsive visibility
-const NavigationLinks = styled.div.attrs((props) => ({
-  className: `${props.display} items-center justify-between w-full md:flex md:w-auto md:order-1`,
-}))`
-  transition: all 0.3s ease-in-out; // Smooth transition for the toggle
-`;
-
 const HeaderContainer = styled.div.attrs({
   className: 'bg-zinc-50 fixed w-full z-20 top-0 start-0 border-b border-gray-200',
 })``;
@@ -67,12 +60,20 @@ const ControlsSection = styled.div.attrs({
 const MenuButton = styled.button.attrs({
   className:
     'inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600',
-  'aria-controls': 'navbar-sticky',
-  'aria-expanded': 'false',
   'data-collapse-toggle': 'navbar-sticky',
   type: 'button',
 })``;
 
-const ButtonContainer = styled.aside.attrs({
+const ButtonContainer = styled.div.attrs({
   className: 'flex space-x-2',
 })``;
+
+/** Because validation error :) */
+const StyledNavigationLinks = styled.div`
+  transition: all 0.3s ease-in-out;
+`;
+
+const NavigationLinks = ({ display, children }) => {
+  const className = `${display} items-center justify-between w-full md:flex md:w-auto md:order-1`;
+  return <StyledNavigationLinks className={className}>{children}</StyledNavigationLinks>;
+};

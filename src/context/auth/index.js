@@ -41,6 +41,17 @@ export function AuthProvider({ children }) {
     return unsubscribe;
   }, []);
 
+  // Effect for updating local storage with the current user ID
+  useEffect(() => {
+    if (currentUser) {
+      // Save user ID to local storage
+      localStorage.setItem('userId', currentUser.uid);
+    } else {
+      // Clear user ID from local storage on logout
+      localStorage.removeItem('userId');
+    }
+  }, [currentUser]); // Dependency on currentUser ensures this runs when user logs in/out
+
   const value = {
     userLoggedIn,
     currentUser,

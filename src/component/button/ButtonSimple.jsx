@@ -10,7 +10,7 @@ class ButtonSimple extends Component {
 
     return (
       <StyledButton style={style} onClick={onClick} className={className}>
-        <span>{children}</span>
+        {children}
       </StyledButton>
     );
   }

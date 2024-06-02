@@ -7,7 +7,7 @@ import fetchUserData from './utils/fetchUserData';
  * Fetches the user data from the database
  * @returns  The user data, loading state and error
  */
-function useFetchUserData() {
+const useFetchUserData = () => {
   const { currentUser } = useAuth();
   const [userData, setUserData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -29,6 +29,6 @@ function useFetchUserData() {
   }, [currentUser]);
 
   return { userData, isLoading, error };
-}
+};
 
 export default useFetchUserData;

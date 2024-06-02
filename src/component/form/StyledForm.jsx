@@ -52,7 +52,7 @@ export const FormInputWithAfter = ({
         className={`${className} block w-full pl-3 pr-12 py-2.5 text-gray-500 bg-transparent outline-none border focus:border-indigo-600 shadow-sm rounded-lg transition duration-300 sm:text-sm read-only:cursor-not-allowed read-only:border-gray-200 read-only:bg-gray-50 read-only:text-gray-500`}
       />
       <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-3">
-        <span className="text-gray-500 sm:text-sm">{afterContent}</span>
+        <span className="text-gray-500 sm:text-sm">{afterContent + ' '}</span>
       </div>
     </FormInputWrapper>
   );
@@ -76,21 +76,21 @@ export const FormButton = styled.button.attrs({
 /**
  * Form error message component
  */
-export const ErrorMessage = styled.span.attrs({
+export const ErrorMessage = styled.p.attrs({
   className: 'text-red-600 font-bold',
 })``;
 
 /**
  * Form centering container component, used to center the form in the middle of the screen
  */
-export const CenterContainer = styled.section.attrs({
+export const CenterContainer = styled.div.attrs({
   className: 'w-full h-screen flex self-center place-content-center place-items-center bg-white',
 })``;
 
 /**
  * Form container component, note that this is not "form" tag, but a "div" tag
  */
-export const FormContainer = styled.div.attrs({
+export const FormContainer = styled.section.attrs({
   className: 'w-96 text-gray-600 space-y-5 p-4 shadow-xl border rounded-xl bg-white',
 })``;
 

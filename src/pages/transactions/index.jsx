@@ -34,6 +34,6 @@ const AddTransactionPage = () => {
 
 export default AddTransactionPage;
 
-const PageContainer = styled.main.attrs({
+const PageContainer = styled.div.attrs({
   className: 'w-full h-screen flex self-center place-content-center place-items-center',
 })``;

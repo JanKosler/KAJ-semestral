@@ -4,13 +4,12 @@ import { useNavigate, useParams } from 'react-router';
 import { usePortfolioData } from '../../provider/PortfolioDataProvider';
 import ErrorPage from '../error';
 import DetailTable from '../../component/graph/DetailTable';
-import { CardBase } from '../../component/card/StyledComponents';
+import { CardBase } from '../../component/card/StyledCard';
 import styled from 'styled-components';
 import ButtonSimple from '../../component/button/ButtonSimple';
 
 import { FaArrowLeft } from 'react-icons/fa';
-import { useHoldings } from '../../hooks/useAddTransactionTrade';
-import { useAuth } from '../../context/auth';
+import useHoldings from '../../hooks/useAddTransactionTrade';
 
 /**
  * The TickerDetailPage component, displays the details of a stock entry
@@ -18,7 +17,6 @@ import { useAuth } from '../../context/auth';
  * @returns The TickerDetailPage component
  */
 const TickerDetailPage = () => {
-  const { currentUser } = useAuth();
   const navigate = useNavigate();
   const { ticker } = useParams();
   const { dataProcessor, isLoading, error, refreshUserData } = usePortfolioData();
@@ -26,7 +24,7 @@ const TickerDetailPage = () => {
   const { deleteTransaction } = useHoldings();
 
   const closePosition = (transactionId) => {
-    deleteTransaction(currentUser.uid, ticker, transactionId)
+    deleteTransaction(ticker, transactionId)
       .then(() => {
         refreshUserData();
         navigate(-1);

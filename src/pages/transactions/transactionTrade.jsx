@@ -13,7 +13,7 @@ import ButtonSimple from '../../component/button/ButtonSimple';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import { useHoldings } from '../../hooks/useAddTransactionTrade';
+import useHoldings from '../../hooks/useAddTransactionTrade';
 import { useAuth } from '../../context/auth';
 import { usePortfolioData } from '../../provider/PortfolioDataProvider';
 
@@ -101,14 +101,8 @@ const TransactionTradeForm = () => {
       </FormItem>
       <FormItem>
         <FormLabel htmlFor="sector">GICS Sector</FormLabel>
-        <FormSelect
-          id="sector"
-          name="sector"
-          type="text"
-          required
-          value={sector}
-          onChange={(e) => setSector(e.target.value)}
-        >
+        <FormSelect id="sector" name="sector" required value={sector} onChange={(e) => setSector(e.target.value)}>
+          <option value="">Select sector</option>
           <option value="energy">Energy</option>
           <option value="materials">Materials</option>
           <option value="industrials">Industrials</option>
@@ -139,15 +133,15 @@ const TransactionTradeForm = () => {
         <FormSelect
           id="currency_symbol"
           name="currency_symbol"
-          type="text"
           required
           value={currencySymbol}
           onChange={(e) => setCurrencySymbol(e.target.value)}
         >
+          <option value="">Select currency</option>
+          <option value="USD">USD</option>
           <option value="EUR" disabled>
             EUR (disabled)
           </option>
-          <option value="USD">USD</option>
         </FormSelect>
       </FormItem>
       <FormItem>

@@ -1,4 +1,4 @@
-import { CardBase } from '../../card/StyledComponents';
+import { CardBase } from '../../card/StyledCard';
 import DonutChart from '../utils/DonutChart';
 
 import styled from 'styled-components';
@@ -13,6 +13,7 @@ import styled from 'styled-components';
 export const DonutGraphCard = ({ name, data, children }) => {
   return (
     <CardBase>
+      <h2>{name}</h2>
       <CardContainer>
         <ChartSection>
           <DonutChart data={data} />
@@ -36,8 +37,6 @@ const ContentSection = styled.div.attrs({
   className: 'flex-1 self-center',
 })``;
 
-export const ColorDot = styled.span.attrs({
-  className: 'w-4 h-4 rounded-full mr-2',
-})`
-  background-color: ${(props) => props.color};
-`;
+export const ColorDot = ({ color }) => {
+  return <p className="w-4 h-4 rounded-full mr-2" style={{ backgroundColor: color }}></p>;
+};

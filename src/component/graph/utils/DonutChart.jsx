@@ -106,12 +106,13 @@ const Container = styled.div`
   height: 200px;
 `;
 
-/* Styled component for the SVG circles used in the chart */
 const Circle = styled.circle`
   transition: stroke 0.3s ease-in-out;
+  -webkit-transition: stroke 0.3s ease-in-out;
+  -moz-transition: stroke 0.3s ease-in-out;
+  -o-transition: stroke 0.3s ease-in-out;
 `;
 
-/* Styled component for displaying the ticker text at the center of the chart */
 const Text = styled.p.attrs({
   className: 'text-gray-600',
 })`
@@ -119,5 +120,9 @@ const Text = styled.p.attrs({
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -o-transform: translate(-50%, -50%);
   text-align: center;
 `;

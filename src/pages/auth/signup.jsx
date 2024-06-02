@@ -33,8 +33,8 @@ const RegisterPage = () => {
   };
 
   return (
-    <main className="w-full h-screen flex self-center place-content-center place-items-center">
-      <div className="w-96 text-gray-600 space-y-5 p-4 shadow-xl border rounded-xl">
+    <div className="w-full h-screen flex self-center place-content-center place-items-center">
+      <section className="w-96 text-gray-600 space-y-5 p-4 shadow-xl border rounded-xl">
         <FormHeader>Create a New Account</FormHeader>
         <form onSubmit={onSubmit} className="space-y-4">
           <div>
@@ -107,8 +107,8 @@ const RegisterPage = () => {
             </Link>
           </div>
         </form>
-      </div>
-    </main>
+      </section>
+    </div>
   );
 };
 

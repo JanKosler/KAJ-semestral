@@ -10,11 +10,11 @@ const SectorPercentGraph = ({ data }) => {
   const chartData = formatDataForChart(data);
 
   return (
-    <DonutGraphCard data={chartData}>
+    <DonutGraphCard name={'Sectors'} data={chartData}>
       {chartData.map((item, index) => (
         <div key={index} className="flex items-center">
           <ColorDot color={item.color}></ColorDot>
-          <span>{item.name}</span>
+          {item.name}
         </div>
       ))}
     </DonutGraphCard>
