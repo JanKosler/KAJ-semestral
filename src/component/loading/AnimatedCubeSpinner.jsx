@@ -3,7 +3,7 @@ import './spin-cube.css'; // Ensure this points to the right CSS file
 import { FcBearish, FcBullish, FcComboChart, FcDebt, FcDoughnutChart, FcNeutralTrading } from 'react-icons/fc';
 
 /**
- * 3d spinning cube with svg icons on each face
+ * 3d spinning cube with svg icons on each face, used as a loading spinner
  * @returns
  */
 const AnimatedCubeSpinner = () => {
