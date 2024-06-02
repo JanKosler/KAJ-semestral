@@ -83,7 +83,7 @@ const Th = styled.th.attrs({
   className: 'px-6 py-3',
 })`
   @media (max-width: 768px) {
-    &[abbr]:not(:nth-child(1)):not(:nth-child(3)):not(:nth-child(5)) {
+    &:not(:nth-child(1)):not(:nth-child(3)):not(:nth-child(5)) {
       display: none;
     }
   }
@@ -93,7 +93,7 @@ const Td = styled.td.attrs({
   className: 'px-6 py-4',
 })`
   @media (max-width: 768px) {
-    &[abbr]:not(:nth-child(1)):not(:nth-child(3)):not(:nth-child(5)) {
+    &:not(:nth-child(1)):not(:nth-child(3)):not(:nth-child(5)) {
       display: none;
     }
   }

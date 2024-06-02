@@ -10,8 +10,65 @@ Jako další rozšíření bych chtěl udělat semi-realtime cenové info a graf
 
 ## body tabulky
 
-## HTML
-https://validator.w3.org/nu/?doc=https%3A%2F%2Fportfolio-manager-b9c63.web.app%2F
+## HTML 
+
+1) validita
+testoval jsem přes w3 validator
+    * https://validator.w3.org/nu/?doc=https%3A%2F%2Fportfolio-manager-b9c63.web.app%2F
+
+2) prohlížeče
+    * testováno v chrome a firefox, věci kde by mohl být problém jsou vendor prefixy
+
+3) semantické značky
+    * layout rozdělen na `<header>` a `<main>`
+    * Menu je `<nav>`
+    * cards, které určují content jsou `<section>`
+
+4) Grafika - SVG / Canvas
+    * ano v rámci donut graph
+
+5) Média - Audio/Video - Ne
+
+5) Formulářové prvky
+    * ano u registrace a login a přidávání trades
+
+6) Offline aplikace - Ne
+
+## CSS
+
+1) Pokročilé selektory
+    * U table, kontrétně výběr věcí co nechci nechat být vidět, dříve jsem používal atribut abbr, který to dělal mnohem lepší, ale ten mi validátor zakázal
+    ```css
+      @media (max-width: 768px) {
+        &:not(:nth-child(1)):not(:nth-child(2)):not(:nth-child(3)):not(:nth-child(5)) {
+          display: none;
+        }
+      }
+    ```
+
+2) Vendor prefixy
+    * Ano, hlavně u AnimatedCube a potom ještě na pár místech
+3) CSS3 transformace 2D/3D
+    * Ano, v rámci AnimatedCube, která se vytvoří v kodu a poté je animována
+4) CSS3 transitions/animations
+    * Ano, v rámci AnimatedCube, točí se na LoadingPage a poté jde vidět u AddDeposit, který jsem nakonec neimplementoval
+5) Media queries
+    * většinou řeší tailwind, já přidával u obou tables kvůli změně věcí co se zobrazují na malých displejích
+
+## JS 
+1) OOP přístup
+    * Ano
+2) Použití JS frameworku či knihovny
+    * React
+3) Použití pokročilých JS API
+    * používám na uložení userId které dostanu z firebase, pod kterým se potom hledají docs, které patří mému uživateli
+4) Funkční historie
+    * používám vrácení na hlavní stránku z TickerDetailPage, jeden krok v historii vzad
+
+5) Ovládání medií - Ne
+6) Offline aplikace - Ne
+7) JS práce se SVG 
+    * Ano, donut graph je SVG, které se tvoří z dat co mu předám 
 
 ## JSON formats
 
