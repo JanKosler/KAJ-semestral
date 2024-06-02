@@ -5,20 +5,31 @@ import { doc, getDoc, setDoc, addDoc, collection } from 'firebase/firestore';
 export function useHoldings() {
   const [error, setError] = useState(null);
 
+  /**
+   * Retrieves a user document if it exists, otherwise creates a new one.
+   * @param {*} userId - The user ID, created by Firebase Auth
+   * @returns {Promise<DocumentReference>} A promise that resolves to the user document reference
+   */
   const retrieveOrCreateUser = (userId) => {
     const userRef = doc(db, 'users', userId);
     return getDoc(userRef).then((docSnap) => {
       if (!docSnap.exists()) {
-        return setDoc(userRef, {}) // Initialize with an empty object or predefined structure
-          .then(() => {
-            console.log('User document created!');
-            return userRef;
-          });
+        return setDoc(userRef, {}).then(() => {
+          console.log('User document created!');
+          return userRef;
+        });
       }
       return userRef;
     });
   };
 
+  /**
+   * Checks if a holding exists for a user.
+   *
+   * @param {DocumentReference} userRef - The user document reference
+   * @param {string} symbol - The ticker symbol of the holding
+   * @returns {Promise<boolean>} A promise that resolves to true if the holding exists, false otherwise
+   * */
   const checkHoldingExists = (userRef, symbol) => {
     const holdingRef = doc(userRef, 'holdings', symbol);
     return getDoc(holdingRef).then((docSnap) => docSnap.exists());

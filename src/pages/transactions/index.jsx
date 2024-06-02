@@ -21,7 +21,7 @@ const AddTransactionPage = () => {
         <FormHeader>Add Transaction</FormHeader>
         <hr />
         <FormLabel htmlFor="transaction-type">Name</FormLabel>
-        <FormSelect name="transaction-type" id="transaction-type" value={transactionType} onChange={handleChange}>
+        <FormSelect id="transaction-type" name="transaction-type" value={transactionType} onChange={handleChange}>
           <option value="deposit">Deposit/Withdrawal</option>
           <option value="trade">Trade</option>
         </FormSelect>

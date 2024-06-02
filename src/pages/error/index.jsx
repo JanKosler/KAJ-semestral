@@ -6,6 +6,9 @@ import { useNavigate } from 'react-router-dom';
 
 import styled from 'styled-components';
 
+/**
+ * ErrorPage, shown when something goes wrong. Shows a message and a spinner
+ */
 const ErrorPage = () => {
   const navigate = useNavigate();
 

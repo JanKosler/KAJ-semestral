@@ -10,8 +10,11 @@
   height: 100%;
   position: relative;
   transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
   transform-origin: 50%;
+  -webkit-transform-origin: 50%;
   animation: rotateCube 12s cubic-bezier(0.4, 0.5, 0.2, 1) infinite;
+  -webkit-animation: rotateCube 12s cubic-bezier(0.4, 0.5, 0.2, 1) infinite;
 }
 
 .cube .face {
@@ -24,6 +27,7 @@
   align-items: center;
   justify-content: center;
   transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
 }
 
 .face div {
@@ -31,6 +35,7 @@
   align-items: center;
   justify-content: center;
   transform-origin: center;
+  -webkit-transform-origin: center;
   width: 100%;
   height: 100%;
   font-size: 20px;
@@ -40,35 +45,74 @@
 .front {
   border-color: #f44336 !important;
   transform: rotateY(0deg) translateZ(50px);
+  -webkit-transform: rotateY(0deg) translateZ(50px);
 }
 .back {
   border-color: #3f51b5 !important;
   transform: rotateY(180deg) translateZ(50px);
+  -webkit-transform: rotateY(180deg) translateZ(50px);
 }
 .right {
   border-color: #4caf50 !important;
   transform: rotateY(90deg) translateZ(50px);
+  -webkit-transform: rotateY(90deg) translateZ(50px);
 }
 .left {
   border-color: #4caf50 !important;
   transform: rotateY(-90deg) translateZ(50px);
+  -webkit-transform: rotateY(-90deg) translateZ(50px);
 }
 .top {
   border-color: #00bcd4 !important;
   transform: rotateX(90deg) translateZ(50px);
+  -webkit-transform: rotateX(90deg) translateZ(50px);
 }
 .bottom {
   border-color: #1565c0 !important;
   transform: rotateX(-90deg) translateZ(50px);
+  -webkit-transform: rotateX(-90deg) translateZ(50px);
 }
 .top .icon {
   transform: rotate(-90deg);
+  -webkit-transform: rotate(-90deg);
 }
 .bottom .icon {
   transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
 }
 
 /** Animation */
+@-webkit-keyframes rotateCube {
+  0%,
+  10% {
+    -webkit-transform: rotateX(0deg) rotateY(0deg);
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+  20%,
+  30% {
+    -webkit-transform: rotateY(180deg);
+    transform: rotateY(180deg);
+  }
+  40%,
+  50% {
+    -webkit-transform: rotateY(270deg);
+    transform: rotateY(270deg);
+  }
+  60%,
+  70% {
+    -webkit-transform: rotateX(-90deg) rotateY(270deg);
+    transform: rotateX(-90deg) rotateY(270deg);
+  }
+  80%,
+  90% {
+    -webkit-transform: rotateX(90deg) rotateY(270deg);
+    transform: rotateX(90deg) rotateY(270deg);
+  }
+  100% {
+    -webkit-transform: rotateX(360deg) rotateY(360deg);
+    transform: rotateX(360deg) rotateY(360deg);
+  }
+}
 @keyframes rotateCube {
   0%,
   10% {

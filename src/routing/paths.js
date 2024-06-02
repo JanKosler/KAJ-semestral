@@ -1,5 +1,5 @@
 /**
- * Path Constants
+ * Path Constants, used to define the paths for the application.
  */
 const PathConstants = {
   HOME: '/',
@@ -7,6 +7,7 @@ const PathConstants = {
   SIGNUP: '/signup',
   TRANSACTION_NEW: '/transactions/new',
   ERROR: '/error',
+  DETAIL: '/detail/:ticker',
 };
 
 export default PathConstants;

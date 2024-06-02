@@ -24,13 +24,16 @@ const DonutChart = ({ data }) => {
           const dashOffset = nextDashOffset;
           nextDashOffset -= dashArray; // Update offset for the next segment
 
+          const strokeColor = hoveredTicker !== item.name && hoveredTicker !== '' ? 'lightgray' : item.color;
+
           return (
             <Circle
               key={index}
               r={radius}
               cx={viewBoxHalf}
               cy={viewBoxHalf}
-              stroke={hoveredTicker !== item.name && hoveredTicker !== '' ? 'lightgray' : item.color}
+              fill={item.color}
+              stroke={strokeColor}
               strokeWidth={strokeWidth}
               strokeDasharray={`${dashArray} ${circumference - dashArray}`}
               strokeDashoffset={dashOffset}
@@ -41,7 +44,7 @@ const DonutChart = ({ data }) => {
           );
         })}
         {/* Add a white circle to cover the center of the donut chart + 1 to catch the few bad pixels :)*/}
-        <circle r={radius + 1} cx={viewBoxHalf} cy={viewBoxHalf} fill="white" />
+        <circle r={radius + 2} cx={viewBoxHalf} cy={viewBoxHalf} fill="white" />
       </svg>
       <Text>{hoveredTicker}</Text>
     </Container>
@@ -52,16 +55,15 @@ export default DonutChart;
 
 const Container = styled.div`
   position: relative;
-  width: ${({ $viewBoxSize }) => `${$viewBoxSize}px`};
-  height: ${({ $viewBoxSize }) => `${$viewBoxSize}px`};
+  width: 200px;
+  height: 200px;
 `;
 
 const Circle = styled.circle.attrs({})`
   transition: stroke 0.3s ease-in-out;
-  fill: 'transparent';
 `;
 
-const Text = styled.text.attrs({
+const Text = styled.p.attrs({
   className: 'text-gray-600',
 })`
   position: absolute;

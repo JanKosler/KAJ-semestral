@@ -1,4 +1,3 @@
-// src/services/firestoreService.js or in your useHoldings.js hook
 import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
 import { db } from '../../config/firebase-config';
 
@@ -9,7 +8,7 @@ const fetchUserData = async (userId) => {
       holdings: [],
     };
 
-    // Get user document reference
+    // get user document reference
     const userRef = doc(db, 'users', userId);
     const userSnap = await getDoc(userRef);
 
@@ -18,7 +17,7 @@ const fetchUserData = async (userId) => {
       return null; // or return userData to indicate an empty structure
     }
 
-    // Get holdings collection for the user
+    // get holdings collection for the user
     const holdingsCol = collection(userRef, 'holdings');
     const holdingsSnapshot = await getDocs(holdingsCol);
 
@@ -27,13 +26,13 @@ const fetchUserData = async (userId) => {
       const transactionsCol = collection(holdingDoc.ref, 'transactions');
       const transactionsSnapshot = await getDocs(transactionsCol);
 
-      // Map transactions data
+      // map transactions data
       const transactions = transactionsSnapshot.docs.map((doc) => ({
         id: doc.id,
         ...doc.data(),
       }));
 
-      // Append the holding data and its transactions to userData
+      // append the holding data and its transactions to userData
       userData.holdings.push({
         id: holdingDoc.id,
         ...holdingData,

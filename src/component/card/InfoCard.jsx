@@ -19,32 +19,7 @@ const InfoCard = ({ title, href, children }) => {
         </div>
       </div>
     </Card>
-    /*
-            
-                <h3 className="text-lg font-semibold">{title}</h3>
-                <div>
-                    <button className="text-green-600 hover:text-green-700 focus:outline-none focus:ring-2 focus:ring-green-600 rounded-full p-2">
-                        <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                        </svg>
-                    </button>
-                </div>
-                <a href={href}>Read</a>
-            </Card>
-            /**/
   );
 };
 
 export default InfoCard;
-/*
-                <div className="w-full flex justify-start items-center mt-6">
-                    <div className="text-2xl font-bold text-green-600">
-                        172 391 Kč
-                    </div>
-                </div>
-                <div className="w-full flex justify-start items-center mt-6">
-                    <div className="text-2xl font-bold text-green-600">
-                        172 391 Kč
-                    </div>
-                </div>
-                */

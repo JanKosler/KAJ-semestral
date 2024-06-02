@@ -3,6 +3,9 @@ import AnimatedCubeSpinner from '../../component/loading/AnimatedCubeSpinner';
 
 import styled from 'styled-components';
 
+/**
+ * LoadingPage, shown when the content is loading, utilizes { @see AnimatedCubeSpinner }
+ */
 const LoadingPage = () => {
   return (
     <Container>

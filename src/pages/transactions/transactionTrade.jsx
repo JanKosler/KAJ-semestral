@@ -1,4 +1,5 @@
 import {
+  ErrorMessage,
   FormInput,
   FormInputWithAfter,
   FormItem,
@@ -26,6 +27,8 @@ const TransactionTradeForm = () => {
   const [currencySymbol, setCurrencySymbol] = useState('USD');
   const [unitPrice, setUnitPrice] = useState(0);
   const [tradeValue, setTradeValue] = useState(0);
+
+  const [error, setError] = useState('');
 
   const { addOrUpdateHolding } = useHoldings();
 
@@ -57,8 +60,7 @@ const TransactionTradeForm = () => {
         navigate('/'); // Navigate to the homepage on successful addition
       })
       .catch((error) => {
-        console.error('Failed to add trade', error);
-        // Optional: Display an error message to the user
+        setError(error.message);
       });
   };
 
@@ -109,23 +111,6 @@ const TransactionTradeForm = () => {
           <option value="real-estate">Real Estate</option>
         </FormSelect>
       </FormItem>
-      {/* 
-      <FormItem>
-        <FormLabel htmlFor="security_id_type">Security ID Type</FormLabel>
-        <FormSelect
-          id="security_id_type"
-          name="security_id_type"
-          value={securityIDType}
-          onChange={(e) => setTickerSymbol(e.target.value)}
-        >
-          <option value="US_ticker_symbol">Ticker symbol</option>
-          <option value="isin" disabled>
-            ISIN (disabled)
-          </option>
-        </FormSelect>
-        <FormMessage>Currently supporting only US registered stocks and ETFs</FormMessage>
-      </FormItem>
-      */}
       <FormItem>
         <FormLabel htmlFor="trade_quantity">Quantity</FormLabel>
         <FormInput
@@ -180,6 +165,7 @@ const TransactionTradeForm = () => {
       <FormItem>
         <ButtonSimple>Add trade</ButtonSimple>
       </FormItem>
+      <ErrorMessage>{error}</ErrorMessage>
     </form>
   );
 };

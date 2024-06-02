@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { useAuth } from '../../context/auth';
 import { doCreateUserWithEmailAndPassword } from '../../config/auth';
 import { ErrorMessage, FormHeader, FormInput, FormLabel } from '../../component/form/StyledForm';
 
@@ -42,6 +41,7 @@ const RegisterPage = () => {
             <FormLabel htmlFor="email">Email</FormLabel>
 
             <FormInput
+              id="email"
               name="email"
               type="email"
               autoComplete="email"
@@ -57,6 +57,7 @@ const RegisterPage = () => {
             <FormLabel htmlFor="password">Password</FormLabel>
 
             <FormInput
+              id="password"
               disabled={isRegistering}
               name="password"
               type="password"
@@ -73,6 +74,7 @@ const RegisterPage = () => {
             <FormLabel htmlFor="confirmPassword">Confirm Password</FormLabel>
 
             <FormInput
+              id="confirmPassword"
               disabled={isRegistering}
               name="confirmPassword"
               type="password"

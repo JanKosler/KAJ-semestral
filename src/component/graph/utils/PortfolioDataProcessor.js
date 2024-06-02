@@ -1,21 +1,28 @@
 export default class PortfolioDataProcessor {
   constructor(data) {
     this.data = data;
+    this.processedData = []; // Initialize an empty array for storing processed data
+  }
+
+  setProcessedData(processedData) {
+    this.processedData = processedData;
+  }
+
+  getProcessedData() {
+    return this.processedData;
+  }
+
+  getTickerDetailData(ticker) {
+    return this.processedData.find((item) => item.ticker === ticker);
   }
 
   transformPortfolioToDisplayFormat(portfolioItem) {
     const totalVolume = portfolioItem.transactions.reduce((acc, transaction) => acc + Number(transaction.quantity), 0);
-    console.log(portfolioItem.ticker + ' ' + totalVolume);
     const totalCost = portfolioItem.transactions.reduce(
       (acc, transaction) => acc + transaction.pricePerUnit * transaction.quantity,
       0
     );
     const averageOpenPrice = totalCost / totalVolume;
-
-    // Placeholder for current market price, you may want to update this dynamically
-    // const currentMarketPrice = 200; // This value should be dynamic or passed when calling this method
-
-    // const grossPL = (currentMarketPrice - averageOpenPrice) * totalVolume;
 
     return {
       name: portfolioItem.name,
@@ -26,9 +33,6 @@ export default class PortfolioDataProcessor {
       totalVolume: totalVolume,
       totalCost: totalCost.toFixed(2),
       transactions: portfolioItem.transactions,
-      /*marketPrice: currentMarketPrice.toFixed(2),
-      grossPL: grossPL.toFixed(2),
-      */
     };
   }
 
@@ -53,14 +57,12 @@ export default class PortfolioDataProcessor {
   }
 
   processData() {
-    console.log(this.data.holdings);
     const transformedData = this.data.holdings.map(this.transformPortfolioToDisplayFormat);
-
     const wholePortfolioValue = transformedData.reduce(
       (acc, item) => acc + Number(item.totalVolume) * Number(item.openPrice),
       0
     );
-    console.log(wholePortfolioValue);
-    return this.calculatePortfolioPercent(transformedData, wholePortfolioValue);
+    this.processedData = this.calculatePortfolioPercent(transformedData, wholePortfolioValue);
+    return this.processedData;
   }
 }

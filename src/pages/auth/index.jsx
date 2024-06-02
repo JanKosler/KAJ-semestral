@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 
 import { useState } from 'react';
 
-import { useAuth } from '../../context/auth/index';
 import { doSignInWithEmailAndPassword } from '../../config/auth';
 import {
   FormLabel,
@@ -30,9 +29,16 @@ const LoginPage = () => {
     e.preventDefault();
     if (!isSigningIn) {
       setIsSigningIn(true);
-      await doSignInWithEmailAndPassword(email, password);
+      try {
+        await doSignInWithEmailAndPassword(email, password);
+        setIsSigningIn(false);
+      } catch (error) {
+        setError(error.message.replace('Firebase:', ''));
+        setIsSigningIn(false);
+      }
     }
   };
+
   return (
     <CenterContainer>
       <FormContainer>
@@ -41,6 +47,7 @@ const LoginPage = () => {
           <div>
             <FormLabel htmlFor="email">Email</FormLabel>
             <FormInput
+              id="email"
               name="email"
               type="email"
               autoComplete="email"
@@ -55,6 +62,7 @@ const LoginPage = () => {
           <div>
             <FormLabel htmlFor="password">Password</FormLabel>
             <FormInput
+              id="password"
               name="password"
               type="password"
               autoComplete="current-password"

@@ -1,38 +1,24 @@
 import React from 'react';
 
-import PortfolioDataProcessor from '../graph/utils/PortfolioDataProcessor.js';
 import LoadingPage from '../../pages/loading/index.js';
 import LargeTable from '../graph/LargeTable.jsx';
 
-import PortfolioPercentGraph from '../graph/PortfolioPercentGraph.jsx';
+import PortfolioPercentGraph from '../graph/graphs/PortfolioPercentGraph.jsx';
+import SectorPercentGraph from '../graph/graphs/SectorPercentGraph.jsx';
 
-const PortfolioScreen = ({ userData }) => {
-  if (!userData) return <LoadingPage />;
-
-  const dataProcessor = new PortfolioDataProcessor(userData);
-  const portfolioData = dataProcessor.processData();
-
-  console.log(portfolioData);
-
-  const data = portfolioData.map((item) => ({
-    name: item.ticker,
-    percentage: Number(item.portfolioPercent),
-    color: item.color,
-  }));
-
-  console.log(data);
+const PortfolioScreen = ({ processedData, dataProcessor }) => {
+  if (!processedData || !dataProcessor) return <LoadingPage />;
 
   return (
     <div className="max-w-5xl mx-auto mt-5">
-      <LargeTable data={portfolioData}></LargeTable>
+      <LargeTable data={processedData}></LargeTable>
 
       <div className="flex space-x-4">
         <div className="flex-1">
-          <PortfolioPercentGraph data={data} />
+          <PortfolioPercentGraph data={processedData} />
         </div>
         <div className="flex-1">
-          {/* Placeholder for additional content or another component */}
-          <div>Additional Content Here</div>
+          <SectorPercentGraph data={processedData} />
         </div>
       </div>
     </div>
