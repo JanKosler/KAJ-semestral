@@ -1,50 +1,72 @@
 # KAJ-semestral
+
 Klientské aplikace v Javascriptu - semestrální práce 2023/2024
 
+Cílem bylo vytvořit aplikaci na správu akciového portfolia, použil jsem firebase pro autentifikaci, firestore pro ukládání a aplikace je nasazena také na firebase
 
+Hlavní funkčnost je přidávní titulů a obchodů nad tituly, aplikace potom vytváří grafy podle sektorizace nebo overview samostatných titulů.
+
+Jako další rozšíření bych chtěl udělat semi-realtime cenové info a grafy/info nad tím, ted v aplikaci není kvůli potřebě samostatného backendu který jsem nestihl vytvořit.
 
 ## JSON formats
 
 ### portfolio format example
 
-"holdings" {
-    symbol: 'NVDA', // The ticker symbol of the stock.
-    name: 'Nvidia', // Plain name of the company
-    currency: 'USD', // used for determining currency of the exchange at which this stock is traded -> might cause errors with some imports
-    sector: 'Technology',
-    transactions : [
+```json
+{
+  "userId": "fasfadsg2342gafgygarkga",
+  "holdings": [
+    {
+      "ticker": "AAPL",
+      "name": "",
+      "currency": "USD",
+      "sector": "information-technology",
+      "transactions": [
         {
-        date: "2023-01-15",
-        volume: 20,
-        price: 120.00,
-        operation-type: "Buy"
+          "date": "2022-06-05",
+          "quantity": 46,
+          "pricePerUnit": 140,
+          "tradeValue": 6440,
+          "operationType": "BUY"
         },
-    ],
-    currentShares : 50,
-    averageOpenPrice : 132.00,
-    currMarketPrice : 983.32,
-    marketValue : 7500.00,
-    grossPL : 900.00
+        {
+          "date": "2022-09-29",
+          "quantity": 40,
+          "pricePerUnit": 170,
+          "tradeValue": 6800,
+          "operationType": "BUY"
+        }
+      ]
+    },
+    {
+      "ticker": "NVDA",
+      "name": "",
+      "currency": "USD",
+      "sector": "information-technology",
+      "transactions": [
+        {
+          "date": "2022-04-16",
+          "quantity": 5,
+          "pricePerUnit": 600,
+          "tradeValue": 3000,
+          "operationType": "BUY"
+        },
+        {
+          "date": "2022-06-09",
+          "quantity": 5,
+          "pricePerUnit": 700,
+          "tradeValue": 3500,
+          "operationType": "BUY"
+        },
+        {
+          "date": "2023-01-28",
+          "quantity": 15,
+          "pricePerUnit": 800,
+          "tradeValue": 12000,
+          "operationType": "SELL"
+        }
+      ]
+    }
+  ]
 }
-
-holdings {
-    symbol: 'NVDA', 
-    name: 'Nvidia',
-    currency: 'USD',
-    sector: 'Technology',
-    transactions : [
-        {
-        date: "2023-01-15",
-        volume: 20,
-        price: 120.00,
-        operation-type: "Buy"
-        },
-        {
-        date: "2023-01-15",
-        volume: 35,
-        price: 123.00,
-        operation-type: "Buy"
-        },
-    ],
-    currMarketPrice : 983.32,
-}
+```
