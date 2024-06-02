@@ -1,3 +1,8 @@
+/**
+ * was created to display the gallery on the main page (currently not used)
+ * @param {*} param0 6 children to display in the gallery
+ * @returns The Gallery component
+ */
 const Gallery = ({ child1, child2, child3, child4, child5, child6 }) => {
   return (
     <section class="text-gray-600 body-font">

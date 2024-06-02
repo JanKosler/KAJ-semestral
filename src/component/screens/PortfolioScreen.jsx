@@ -6,6 +6,12 @@ import LargeTable from '../graph/LargeTable.jsx';
 import PortfolioPercentGraph from '../graph/graphs/PortfolioPercentGraph.jsx';
 import SectorPercentGraph from '../graph/graphs/SectorPercentGraph.jsx';
 
+/**
+ * The main portfolio screen component
+ * @param {*} processedData The data from the API
+ * @param {PortfolioDataProcessor} dataProcessor The data processor
+ * @returns The PortfolioScreen component
+ */
 const PortfolioScreen = ({ processedData, dataProcessor }) => {
   if (!processedData || !dataProcessor) return <LoadingPage />;
 

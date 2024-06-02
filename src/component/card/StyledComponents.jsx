@@ -1,5 +1,8 @@
 import styled from 'styled-components';
 
+/**
+ * Card base component, used for creating cards, containers, etc.
+ */
 export const CardBase = styled.section.attrs({
   className: 'bg-white shadow-2xl shadow-slate-200/50 rounded-lg w-full',
 })`
@@ -7,6 +10,9 @@ export const CardBase = styled.section.attrs({
   padding: 1.25rem;
 `;
 
+/**
+ * Defines a basic section component
+ */
 export const SectionBase = styled.section.attrs({
   className: 'w-full',
 })`

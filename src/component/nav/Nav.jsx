@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import MenuIcon from '../icon/MenuIcon';
 import PathConstants from '../../routing/paths';
 import { Link } from 'react-router-dom';
 
+/**
+ * Navigation bar component
+ * @param {*} buttons  The buttons to render
+ * @param {*} children  The children to render
+ * @returns The Nav component
+ */
 const Nav = ({ buttons, children }) => {
+  const [isMenuOpen, setMenuOpen] = useState(false); // State for mobile menu toggle
+
+  const toggleMenu = () => {
+    setMenuOpen(!isMenuOpen); // Toggle mobile menu
+  };
+
   return (
     <HeaderContainer>
       <NavWrapper>
@@ -13,13 +25,14 @@ const Nav = ({ buttons, children }) => {
         </LogoSection>
         <ControlsSection>
           <ButtonContainer>{buttons}</ButtonContainer>
-          <MenuButton>
-            <span className="sr-only">Open main menu</span>
+          <MenuButton onClick={toggleMenu}>
+            <span className="sr-only">Toggle navigation</span>
             <MenuIcon />
           </MenuButton>
         </ControlsSection>
-        <NavigationLinks>
-          <ul className="flex space-x-6">{children}</ul>
+        {/* Conditional rendering based on isMenuOpen state */}
+        <NavigationLinks display={isMenuOpen ? 'flex' : 'hidden'}>
+          <ul className="flex flex-col md:flex-row space-y-4 md:space-y-0 space-x-0 md:space-x-6">{children}</ul>
         </NavigationLinks>
       </NavWrapper>
     </HeaderContainer>
@@ -27,6 +40,13 @@ const Nav = ({ buttons, children }) => {
 };
 
 export default Nav;
+
+// Styled components to handle responsive visibility
+const NavigationLinks = styled.div.attrs((props) => ({
+  className: `${props.display} items-center justify-between w-full md:flex md:w-auto md:order-1`,
+}))`
+  transition: all 0.3s ease-in-out; // Smooth transition for the toggle
+`;
 
 const HeaderContainer = styled.div.attrs({
   className: 'bg-zinc-50 fixed w-full z-20 top-0 start-0 border-b border-gray-200',
@@ -51,11 +71,6 @@ const MenuButton = styled.button.attrs({
   'aria-expanded': 'false',
   'data-collapse-toggle': 'navbar-sticky',
   type: 'button',
-})``;
-
-const NavigationLinks = styled.section.attrs({
-  className: 'items-center justify-between hidden w-full md:flex md:w-auto md:order-1',
-  id: 'navbar-sticky',
 })``;
 
 const ButtonContainer = styled.aside.attrs({

@@ -17,6 +17,10 @@ import { useHoldings } from '../../hooks/useAddTransactionTrade';
 import { useAuth } from '../../context/auth';
 import { usePortfolioData } from '../../provider/PortfolioDataProvider';
 
+/**
+ * Transaction trade form component
+ * @returns The TransactionTradeForm component
+ */
 const TransactionTradeForm = () => {
   const { currentUser } = useAuth();
   const navigate = useNavigate();
@@ -29,18 +33,23 @@ const TransactionTradeForm = () => {
   const [currencySymbol, setCurrencySymbol] = useState('USD');
   const [unitPrice, setUnitPrice] = useState(0);
   const [tradeValue, setTradeValue] = useState(0);
-
   const [error, setError] = useState('');
+  const [isFormValid, setIsFormValid] = useState(false);
 
   const { addOrUpdateHolding } = useHoldings();
 
   useEffect(() => {
     setTradeValue(() => quantity * unitPrice);
+    setIsFormValid(quantity > 0 && unitPrice > 0);
   }, [quantity, unitPrice]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    console.log('Submiting trade');
+    if (!isFormValid) {
+      setError('Quantity and price must be greater than zero.');
+      return;
+    }
+    console.log('Submitting trade');
     const newHolding = {
       symbol: tickerSymbol,
       name: '',
@@ -55,7 +64,6 @@ const TransactionTradeForm = () => {
       },
     };
 
-    // Add the trade to the user's holdings
     addOrUpdateHolding(currentUser.uid, newHolding)
       .then(() => {
         console.log('Trade successfully added.');
@@ -122,9 +130,9 @@ const TransactionTradeForm = () => {
           type="number"
           required
           value={quantity}
-          onChange={(e) => setQuantity(e.target.value)}
+          onChange={(e) => setQuantity(Math.max(0, parseFloat(e.target.value)))}
         />
-        <FormMessage>Positive quantity is used as buying shares and negative for selling.</FormMessage>
+        <FormMessage>Positive quantity is used for buying shares and negative for selling.</FormMessage>
       </FormItem>
       <FormItem>
         <FormLabel htmlFor="currency_symbol">Currency Symbol</FormLabel>
@@ -150,7 +158,7 @@ const TransactionTradeForm = () => {
           type="number"
           required
           value={unitPrice}
-          onChange={(e) => setUnitPrice(e.target.value)}
+          onChange={(e) => setUnitPrice(Math.max(0, parseFloat(e.target.value)))}
           afterContent={currencySymbol}
         />
       </FormItem>
@@ -166,7 +174,7 @@ const TransactionTradeForm = () => {
         />
       </FormItem>
       <FormItem>
-        <ButtonSimple>Add trade</ButtonSimple>
+        <ButtonSimple disabled={!isFormValid}>Add trade</ButtonSimple>
       </FormItem>
       <ErrorMessage>{error}</ErrorMessage>
     </form>

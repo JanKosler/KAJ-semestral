@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
+/**
+ * A simple button component
+ */
 class ButtonSimple extends Component {
   render() {
     const { children, style, className, onClick } = this.props;

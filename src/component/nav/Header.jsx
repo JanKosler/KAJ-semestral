@@ -8,6 +8,10 @@ import ButtonSimple from '../button/ButtonSimple';
 import PathConstants from '../../routing/paths';
 import { doSignOut } from '../../config/auth';
 
+/**
+ * Main header component, displays the navigation bar
+ * @returns The Header component
+ */
 const Header = () => {
   const { userLoggedIn } = useAuth();
   const navigate = useNavigate();

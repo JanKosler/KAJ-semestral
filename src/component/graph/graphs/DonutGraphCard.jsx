@@ -3,6 +3,13 @@ import DonutChart from '../utils/DonutChart';
 
 import styled from 'styled-components';
 
+/**
+ * A card that contains a donut graph and additional content
+ * @returns  The DonutGraphCard component
+ * @param {*} name The name of the card (currently not used)
+ * @param {*} data The data for the donut graph
+ * @param {*} children The additional content
+ */
 export const DonutGraphCard = ({ name, data, children }) => {
   return (
     <CardBase>

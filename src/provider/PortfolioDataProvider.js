@@ -5,6 +5,10 @@ import fetchUserData from '../hooks/utils/fetchUserData';
 
 const PortfolioDataContext = createContext();
 
+/**
+ * Portfolio data provider, provides data fetched from the database
+ * @returns
+ */
 export const PortfolioDataProvider = ({ children }) => {
   const { currentUser } = useAuth();
   const [userData, setUserData] = useState(null);

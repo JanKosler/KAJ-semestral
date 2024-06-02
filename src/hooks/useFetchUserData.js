@@ -3,6 +3,10 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '../context/auth';
 import fetchUserData from './utils/fetchUserData';
 
+/**
+ * Fetches the user data from the database
+ * @returns  The user data, loading state and error
+ */
 function useFetchUserData() {
   const { currentUser } = useAuth();
   const [userData, setUserData] = useState(null);

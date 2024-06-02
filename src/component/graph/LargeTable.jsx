@@ -8,6 +8,11 @@ import { FormatCurrency } from '../utils/Utils.js';
 import { formatGICSSector } from '../utils/GICSSectorUtils.js';
 import { useNavigate } from 'react-router-dom';
 
+/**
+ * Main table component for displaying a large table of data
+ * @param {*} param0 Data from the API
+ * @returns The LargeTable component
+ */
 const LargeTable = ({ data }) => {
   const navigate = useNavigate();
 
@@ -30,7 +35,7 @@ const LargeTable = ({ data }) => {
             <Th abbr="totalVol">Total Volume</Th>
             <Th abbr="mPrice">Market price</Th>
             <Th abbr="pPercent">Portfolio percent</Th>
-            {/* TODO LATER
+            {/* TODO 
             <Th abbr="nProfit">Net profit/loss</Th>
             */}
           </Tr>
@@ -42,9 +47,9 @@ const LargeTable = ({ data }) => {
               <Td abbr="sector">{formatGICSSector(item.sector)}</Td>
               <Td abbr="avgOpen">{FormatCurrency(item.openPrice, 'USD')}</Td>
               <Td abbr="totalVol">{item.totalVolume}</Td>
-              <Td abbr="mPrice">{FormatCurrency(item.marketPrice, 'USD')}</Td>
+              <Td abbr="mPrice">{/*FormatCurrency(item.marketPrice, 'USD')*/ 'Coming soon...'}</Td>
               <Td abbr="pPercent">{item.portfolioPercent + ' %'}</Td>
-              {/*  TODO LATER
+              {/*  TODO 
               <Td abbr="nProfit" className={GetValueColor(item.grossPL)}>{FormatCurrency(item.grossPL, item.currency)}</Td>
               */}
             </Tr>

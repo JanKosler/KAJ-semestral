@@ -1,5 +1,11 @@
 import { ColorDot, DonutGraphCard } from './DonutGraphCard';
 
+/**
+ * This component displays a donut graph of stock titles with the percentage of the portfolio
+ * @returns  The PorfolioPercentGraph component
+ * @param {*} data data from the API
+ * @returns  The PorfolioPercentGraph component
+ */
 const PorfolioPercentGraph = ({ data }) => {
   const processedData = formatDataForChart(data);
 

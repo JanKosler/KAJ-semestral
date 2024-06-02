@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { db } from '../config/firebase-config';
-import { doc, getDoc, setDoc, addDoc, collection } from 'firebase/firestore';
+import { doc, getDoc, setDoc, addDoc, collection, deleteDoc, query, getDocs } from 'firebase/firestore';
 
 export function useHoldings() {
   const [error, setError] = useState(null);
 
   /**
-   * Retrieves a user document if it exists, otherwise creates a new one.
-   * @param {*} userId - The user ID, created by Firebase Auth
-   * @returns {Promise<DocumentReference>} A promise that resolves to the user document reference
+   * Retrieves the user document or creates one if it does not exist
+   * @param {string} userId  The user ID
+   * @returns  The user document reference
    */
   const retrieveOrCreateUser = (userId) => {
     const userRef = doc(db, 'users', userId);
@@ -24,17 +24,22 @@ export function useHoldings() {
   };
 
   /**
-   * Checks if a holding exists for a user.
-   *
-   * @param {DocumentReference} userRef - The user document reference
-   * @param {string} symbol - The ticker symbol of the holding
-   * @returns {Promise<boolean>} A promise that resolves to true if the holding exists, false otherwise
+   * Checks if a holding document exists
+   * @param {DocumentReference} userRef The user document reference
+   * @param {string} symbol The holding symbol
+   * @returns  True if the holding document exists, false otherwise
    * */
   const checkHoldingExists = (userRef, symbol) => {
     const holdingRef = doc(userRef, 'holdings', symbol);
     return getDoc(holdingRef).then((docSnap) => docSnap.exists());
   };
 
+  /**
+   * Adds or updates a holding document
+   * @param {string} userId The user ID
+   * @param {object} holding The holding object
+   * @returns
+   * */
   const addOrUpdateHolding = async (userId, holding) => {
     try {
       const userRef = await retrieveOrCreateUser(userId);
@@ -62,5 +67,39 @@ export function useHoldings() {
     }
   };
 
-  return { addOrUpdateHolding, error };
+  /**
+   * Deletes a transaction from a holding document
+   * @param {string} userId The user ID
+   * @param {string} symbol The holding symbol
+   * @param {string} transactionId The transaction ID
+   * @returns
+   * */
+  const deleteTransaction = async (userId, symbol, transactionId) => {
+    if (!userId || !symbol || !transactionId) {
+      console.error('Missing required parameters: userID, symbol, or transactionID are undefined.');
+      return;
+    }
+
+    try {
+      const userRef = await retrieveOrCreateUser(userId);
+      const transactionRef = doc(db, 'users', userId, 'holdings', symbol, 'transactions', transactionId);
+      await deleteDoc(transactionRef);
+      console.log('Transaction deleted successfully.');
+
+      // Check if there are any transactions left
+      const transactionsCol = collection(userRef, 'holdings', symbol, 'transactions');
+      const snapshot = await getDocs(query(transactionsCol));
+      if (snapshot.empty) {
+        const holdingRef = doc(userRef, 'holdings', symbol);
+        await deleteDoc(holdingRef);
+        console.log('Holding document deleted successfully as it had no more transactions.');
+      }
+    } catch (e) {
+      console.error('Error deleting transaction: ', e);
+      setError(e.message);
+    }
+  };
+
+  // Returns
+  return { addOrUpdateHolding, deleteTransaction, error };
 }

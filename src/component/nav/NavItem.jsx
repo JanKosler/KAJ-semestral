@@ -1,6 +1,13 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
+/**
+ * Navigation item component
+ * @param {*} linkTo The link to navigate to
+ * @param {boolean} isActive  The active state of the link
+ * @param {*} children  The children to render
+ * @returns  The NavItem component
+ */
 const NavItem = ({ linkTo, isActive, children }) => {
   return (
     <li>

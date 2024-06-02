@@ -1,3 +1,8 @@
+/**
+ * Format GICS sector name
+ * @param {string} sector  The sector name
+ * @returns  The formatted sector name
+ */
 export const formatGICSSector = (sector) => {
   const sectorNames = {
     'energy': 'Energy',
@@ -16,6 +21,9 @@ export const formatGICSSector = (sector) => {
   return sectorNames[sector] || 'Unknown Sector';
 };
 
+/**
+ * map of sector colors
+ */
 export const sectorColors = {
   'information-technology': '#FE7E4F', // Bright Orange
   'industrials': '#A2CC96', // Soft Green

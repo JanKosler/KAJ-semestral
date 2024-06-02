@@ -7,6 +7,10 @@ import PathConstants from '../routing/paths';
 import LoadingPage from '../pages/loading';
 import { PortfolioDataProvider } from '../provider/PortfolioDataProvider';
 
+/**
+ * Main layout component
+ * @returns  The Layout component
+ */
 const Layout = () => {
   const navigate = useNavigate();
   const { userLoggedIn } = useAuth();

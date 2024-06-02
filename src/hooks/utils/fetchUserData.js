@@ -1,6 +1,11 @@
 import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
 import { db } from '../../config/firebase-config';
 
+/**
+ * Fetches user data from Firestore
+ * @param {string} userId The user ID
+ * @returns The user data
+ */
 const fetchUserData = async (userId) => {
   try {
     const userData = {

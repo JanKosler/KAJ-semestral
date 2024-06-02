@@ -2,20 +2,27 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { CardBase } from '../card/StyledComponents';
+import ButtonSimple from '../button/ButtonSimple';
 
-const DetailTable = ({ data }) => {
+/**
+ * A table component for displaying open positions
+ * @param {*} param0  The data for the table
+ * @returns        The DetailTable component
+ */
+const DetailTable = ({ data, closePosition }) => {
   return (
     <CardContainer>
-      <h3>Transactions</h3>
+      <h3>Open positions</h3>
       <hr />
       <Table>
         <Thead>
           <Tr>
-            <Th abbr="date">Ticker symbol</Th>
+            <Th abbr="date">Date</Th>
             <Th abbr="pricePerUnit">Open price</Th>
             <Th abbr="quantity">Volume</Th>
             <Th abbr="totalPrice">Total Price</Th>
             <Th abbr="operationType">Type</Th>
+            <Th abbr="closePosition">Close Position</Th>
           </Tr>
         </Thead>
         <Tbody>
@@ -26,6 +33,9 @@ const DetailTable = ({ data }) => {
               <Td abbr="quantity">{item.quantity}</Td>
               <Td abbr="totalPrice">{item.tradeValue}</Td>
               <Td abbr="operationType">{item.operationType}</Td>
+              <Td abbr="closePosition">
+                <ButtonSimple onClick={() => closePosition(item.id)}>Close</ButtonSimple>
+              </Td>
             </Tr>
           ))}
         </Tbody>
@@ -75,7 +85,7 @@ const Th = styled.th.attrs({
   className: 'px-6 py-3',
 })`
   @media (max-width: 768px) {
-    &[abbr]:not([abbr='date']):not([abbr='pricePerUnit']):not([abbr='quantity']) {
+    &[abbr]:not([abbr='date']):not([abbr='pricePerUnit']):not([abbr='quantity']):not([abbr='closePosition']) {
       display: none;
     }
   }
@@ -85,7 +95,7 @@ const Td = styled.td.attrs({
   className: 'px-6 py-4',
 })`
   @media (max-width: 768px) {
-    &[abbr]:not([abbr='date']):not([abbr='pricePerUnit']):not([abbr='quantity']) {
+    &[abbr]:not([abbr='date']):not([abbr='pricePerUnit']):not([abbr='quantity']):not([abbr='closePosition']) {
       display: none;
     }
   }

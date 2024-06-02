@@ -1,6 +1,11 @@
 import { ColorDot, DonutGraphCard } from './DonutGraphCard';
 import { formatGICSSector, sectorColors } from '../../utils/GICSSectorUtils';
 
+/**
+ * A donut graph that shows the percentage of the portfolio that each sector makes up
+ * @param {*} param0  Data from the API
+ * @returns  The SectorPercentGraph component
+ */
 const SectorPercentGraph = ({ data }) => {
   const chartData = formatDataForChart(data);
 
