@@ -8,6 +8,11 @@ Hlavní funkčnost je přidávní titulů a obchodů nad tituly, aplikace potom 
 
 Jako další rozšíření bych chtěl udělat semi-realtime cenové info a grafy/info nad tím, ted v aplikaci není kvůli potřebě samostatného backendu který jsem nestihl vytvořit.
 
+## body tabulky
+
+## HTML
+https://validator.w3.org/nu/?doc=https%3A%2F%2Fportfolio-manager-b9c63.web.app%2F
+
 ## JSON formats
 
 ### portfolio format example

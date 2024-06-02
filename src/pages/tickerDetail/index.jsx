@@ -24,7 +24,8 @@ const TickerDetailPage = () => {
   const { deleteTransaction } = useHoldings();
 
   const closePosition = (transactionId) => {
-    deleteTransaction(ticker, transactionId)
+    const userId = localStorage.getItem('userId');
+    deleteTransaction(userId, ticker, transactionId)
       .then(() => {
         refreshUserData();
         navigate(-1);
