@@ -37,6 +37,7 @@ export function useHoldings() {
         const holdingRef = doc(userRef, 'holdings', holding.symbol);
         await setDoc(holdingRef, {
           name: holding.name,
+          ticker: holding.symbol,
           currency: holding.currency,
           sector: holding.sector,
         });

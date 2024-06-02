@@ -1,16 +1,14 @@
 import React from 'react';
 import styled from 'styled-components';
 import MenuIcon from '../icon/MenuIcon';
-import { useNavigate, Link } from 'react-router-dom';
 import PathConstants from '../../routing/paths';
+import { Link } from 'react-router-dom';
 
 const Nav = ({ buttons, children }) => {
-  const navigate = useNavigate();
-
   return (
     <NavContainer>
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <LogoContainer to={PathConstants.Home}>
+        <LogoContainer to={PathConstants.HOME}>
           <img src={process.env.PUBLIC_URL + '/logo.png'} className="h-8" alt="home icon" />
         </LogoContainer>
         <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">

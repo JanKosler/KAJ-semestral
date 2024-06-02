@@ -1,30 +1,30 @@
 // Example of using fetchUserData in a React component
 import { useState, useEffect } from 'react';
-import { fetchUserData } from '../services/firestoreService';
 import { useAuth } from '../context/auth';
+import fetchUserData from './utils/fetchUserData';
 
 function useFetchUserData() {
   const { currentUser } = useAuth();
   const [userData, setUserData] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     if (currentUser && currentUser.uid) {
-      setLoading(true);
+      setIsLoading(true);
       fetchUserData(currentUser.uid)
         .then((data) => {
           setUserData(data);
-          setLoading(false);
+          setIsLoading(false);
         })
         .catch((err) => {
           setError(err);
-          setLoading(false);
+          setIsLoading(false);
         });
     }
   }, [currentUser]);
 
-  return { userData, loading, error };
+  return { userData, isLoading, error };
 }
 
 export default useFetchUserData;

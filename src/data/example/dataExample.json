@@ -1,11 +1,11 @@
 {
   "userId": "fasfadsg2342gafgygarkga",
-  "titles": [
+  "holdings": [
     {
       "ticker": "AAPL",
-      "name": "Apple Inc.",
+      "name": "",
       "currency": "USD",
-      "sector": "Technology",
+      "sector": "information-technology",
       "transactions": [
         {
           "date": "2022-06-05",
@@ -25,9 +25,9 @@
     },
     {
       "ticker": "NVDA",
-      "name": "Nvidia",
+      "name": "",
       "currency": "USD",
-      "sector": "Technology",
+      "sector": "information-technology",
       "transactions": [
         {
           "date": "2022-04-16",

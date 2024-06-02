@@ -1,6 +1,6 @@
 // src/services/firestoreService.js or in your useHoldings.js hook
-import { db } from '../config/firebase-config';
 import { collection, doc, getDoc, getDocs } from 'firebase/firestore';
+import { db } from '../../config/firebase-config';
 
 const fetchUserData = async (userId) => {
   try {
